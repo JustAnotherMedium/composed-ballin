@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b0e8r73ymrrcw"]
+
+[ext_resource type="Script" uid="uid://dy58kmuioc7pc" path="res://Scripts/CameraMovementWASD.cs" id="1_ormqy"]
+
+[node name="Test Level" type="Node2D" unique_id=1962027383]
+
+[node name="Main Camera Movement" type="CharacterBody2D" parent="." unique_id=1778955893]
+script = ExtResource("1_ormqy")
+
+[node name="Camera2D" type="Camera2D" parent="Main Camera Movement" unique_id=1543180540]
+zoom = Vector2(0.7, 0.7)
+
+[node name="Level" type="StaticBody2D" parent="." unique_id=298860563]
+position = Vector2(1723, 1669)
+
+[node name="Polygon2D" type="Polygon2D" parent="Level" unique_id=326617471]
+position = Vector2(585, -173)
+color = Color(0.76240367, 0.76240367, 0.76240367, 1)
+polygon = PackedVector2Array(-2579, -396, -2391, 149, -2243, 277, -1005, 727, -225, 983, -30, 976, -63, 1071, 704, 1286, 872, 1461, 993, 1696, 1296, 1696, 1296, 263, 1451, 263, 1451, 2100, -2862, 2100, -2855, -1493)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level" unique_id=2131436493]
+visible = false
+polygon = PackedVector2Array(-2579, -396, -2391, 149, -2243, 277, -1005, 727, -225, 983, -30, 976, -63, 1071, 704, 1286, 872, 1461, 993, 1696, 1296, 1696, 1296, 263, 1451, 263, 1451, 2100, -2862, 2100, -2855, -1493)
