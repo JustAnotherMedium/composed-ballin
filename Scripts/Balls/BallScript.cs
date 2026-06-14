@@ -10,8 +10,6 @@ public partial class BallScript : RigidBody2D
 	[ExportGroup("Ball Properties")]
 	[Export]
 	public int HitPoints { get; set; } // Think of it like the max hp
-	[Export]
-	public int SpawnCost { get; set; }
 	
 	private int hp;
 
