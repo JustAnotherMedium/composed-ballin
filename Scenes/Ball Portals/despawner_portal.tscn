@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c8jq5c2qnk5e1"]
+
+[ext_resource type="Texture2D" uid="uid://c4hccj16f70si" path="res://icon.svg" id="1_fbmcu"]
+[ext_resource type="Script" uid="uid://bkk7t0l157m31" path="res://Scripts/Ball Portals/DespawnerPortal.cs" id="1_niluv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niluv"]
+size = Vector2(128, 126)
+
+[node name="Despawner Portal" type="Node2D" unique_id=1478079035]
+script = ExtResource("1_niluv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1180242048]
+texture = ExtResource("1_fbmcu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1852448725]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1009671827]
+shape = SubResource("RectangleShape2D_niluv")

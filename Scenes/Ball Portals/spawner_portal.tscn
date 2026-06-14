@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cgl3kg53qwdxp"]
+
+[ext_resource type="Script" uid="uid://cwo3vnrked4a4" path="res://Scripts/Ball Portals/SpawnerScript.cs" id="1_3hy5f"]
+[ext_resource type="Texture2D" uid="uid://c4hccj16f70si" path="res://icon.svg" id="2_sqoik"]
+
+[node name="Spawner Portal" type="Node2D" unique_id=1955785797]
+script = ExtResource("1_3hy5f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=135928930]
+position = Vector2(0, 1)
+texture = ExtResource("2_sqoik")
+
+[node name="Timers" type="Node" parent="." unique_id=113629882]
+
+[node name="Spawn Cooldown" type="Timer" parent="Timers" unique_id=1770314296]
+one_shot = true
+
+[node name="Detonation Timer" type="Timer" parent="Timers" unique_id=788197390]
+wait_time = 20.0
+one_shot = true
+
+[node name="Balls" type="Node2D" parent="." unique_id=347291567]
+position = Vector2(-1, 0)

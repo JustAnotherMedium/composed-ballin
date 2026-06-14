@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dsp42o1w8p3pw"]
+
+[ext_resource type="Script" uid="uid://dy58kmuioc7pc" path="res://Scripts/Camera/CameraMovementWASD.cs" id="1_4br17"]
+
+[node name="Main Camera Movement" type="CharacterBody2D" unique_id=1970036365]
+script = ExtResource("1_4br17")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1715313580]
+zoom = Vector2(0.7, 0.7)
