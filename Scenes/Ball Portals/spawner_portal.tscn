@@ -21,3 +21,5 @@ one_shot = true
 
 [node name="Balls" type="Node2D" parent="." unique_id=347291567]
 position = Vector2(-1, 0)
+
+[connection signal="timeout" from="Timers/Spawn Cooldown" to="." method="SpawnBall"]

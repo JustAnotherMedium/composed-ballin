@@ -8,6 +8,9 @@ public partial class SpawnerScript : Node2D
 
 	private int currentWave;
 	private int spawnCredits;
+	private bool waveOngoing = true;
+	private Timer spawnCooldown;
+	private Timer detonationTimer;
 
 
 	public override void _Ready()
@@ -15,12 +18,28 @@ public partial class SpawnerScript : Node2D
 		// fetch all the assets it needs
 		ballParent = GetNode<Node2D>("Balls");
 
-		balls[1] = GD.Load<PackedScene>("res://Scenes/Balls/basic_ball.tscn");
+		balls[0] = GD.Load<PackedScene>("res://Scenes/Balls/basic_ball.tscn");
+
+		spawnCooldown = GetNode<Timer>("Timers/Spawn Cooldown");
+		detonationTimer = GetNode<Timer>("Timers/Detonation Timer");
+
+		spawnCooldown.Start();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+
 	}
+
+	public void SpawnBall()
+	{
+		RigidBody2D ball = balls[0].Instantiate<RigidBody2D>();
+		ballParent.AddChild(ball);
+
+		if (waveOngoing)
+		{
+			spawnCooldown.Start();
+		}
+	}
+
 }
