@@ -6,6 +6,10 @@ public partial class DespawnerPortal : Node2D
 {
 	private Area2D boundingBox;
 
+	[Signal]
+	public delegate void BallDespawnEventHandler(int damageTaken);
+	private readonly int damagePerDespawn = 3;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -23,6 +27,7 @@ public partial class DespawnerPortal : Node2D
 
 			if (ball != null)
 			{
+				EmitSignal(SignalName.BallDespawn, damagePerDespawn);
 				ball.QueueFree();
 			}
 		}

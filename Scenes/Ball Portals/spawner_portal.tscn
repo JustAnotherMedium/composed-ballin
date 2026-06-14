@@ -17,10 +17,11 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Detonation Timer" type="Timer" parent="Timers" unique_id=788197390]
-wait_time = 60.0
+wait_time = 30.0
 one_shot = true
 
 [node name="Balls" type="Node2D" parent="." unique_id=347291567]
 position = Vector2(-1, 0)
 
 [connection signal="timeout" from="Timers/Spawn Cooldown" to="." method="SpawnBall"]
+[connection signal="timeout" from="Timers/Detonation Timer" to="." method="Detonate"]
