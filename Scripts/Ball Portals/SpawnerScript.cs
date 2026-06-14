@@ -8,8 +8,8 @@ public partial class SpawnerScript : Node2D
 	private PackedScene[] balls = new PackedScene[5];
 	private int[] spawnCosts = {1, 15, 45, 60, 85};
 
-	private int currentWave = 8;
-	private int spawnCredits = 160;
+	private int currentWave = 10;
+	private int spawnCredits;
 	private float ticketMultiplier = 2.2f;
 	private bool waveOngoing = true;
 	private Timer spawnCooldown;
@@ -29,6 +29,7 @@ public partial class SpawnerScript : Node2D
 		spawnCooldown = GetNode<Timer>("Timers/Spawn Cooldown");
 		detonationTimer = GetNode<Timer>("Timers/Detonation Timer");
 
+		spawnCredits = 20 * currentWave; // This is only here because i might want to start on a different wave
 		GD.Print("Wave " + currentWave + " start!");
 		spawnCooldown.Start();
 	}
