@@ -1,25 +1,24 @@
-[gd_scene format=3 uid="uid://unc8qyrs6d8i"]
+[gd_scene format=3 uid="uid://ddev5mkrkds8t"]
 
 [ext_resource type="Script" uid="uid://3n16omlyklrn" path="res://Scripts/Balls/BallScript.cs" id="1_notfb"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_fki37"]
-radius = 22.0
-height = 44.0
+radius = 15.0
+height = 30.0
 
 [sub_resource type="Gradient" id="Gradient_2q37t"]
-colors = PackedColorArray(0.22352941, 0.6313726, 1, 1, 0.22352941, 0.6313726, 1, 1)
+colors = PackedColorArray(0, 0.7140788, 0.28466403, 1, 0, 0.7137255, 0.28627452, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_wqnt0"]
 gradient = SubResource("Gradient_2q37t")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fki37"]
-radius = 22.0
+radius = 15.132746
 
 [node name="Ball L2" type="RigidBody2D" unique_id=219977215]
 mass = 7.0
 script = ExtResource("1_notfb")
-HitPoints = 10
-SpawnCost = 1
+HitPoints = 20
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1429461760]
 mesh = SubResource("SphereMesh_fki37")

@@ -1,23 +1,23 @@
-[gd_scene format=3 uid="uid://csg8kqwd87n2m"]
+[gd_scene format=3 uid="uid://d2vbv54wd6vq0"]
 
-[ext_resource type="Script" uid="uid://3n16omlyklrn" path="res://Scripts/Balls/BallScript.cs" id="1_p72r1"]
+[ext_resource type="Script" uid="uid://3n16omlyklrn" path="res://Scripts/Balls/BallScript.cs" id="1_qe0di"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_fki37"]
-radius = 6.0
-height = 12.0
+radius = 28.0
+height = 56.0
 
 [sub_resource type="Gradient" id="Gradient_2q37t"]
-colors = PackedColorArray(0.76702017, 0.17032501, 0.99999994, 1, 0.76862746, 0.16862746, 1, 1)
+colors = PackedColorArray(0.08, 0.08, 0.08, 1, 0.078431375, 0.078431375, 0.078431375, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_wqnt0"]
 gradient = SubResource("Gradient_2q37t")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fki37"]
-radius = 6.0827627
+radius = 28.0
 
-[node name="Ball L5" type="RigidBody2D" unique_id=219977215]
-mass = 2.5
-script = ExtResource("1_p72r1")
+[node name="Ball L6" type="RigidBody2D" unique_id=219977215]
+mass = 9.0
+script = ExtResource("1_qe0di")
 HitPoints = 10
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1429461760]
@@ -25,6 +25,7 @@ mesh = SubResource("SphereMesh_fki37")
 texture = SubResource("GradientTexture1D_wqnt0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1925644590]
+visible = false
 shape = SubResource("CircleShape2D_fki37")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1920008077]

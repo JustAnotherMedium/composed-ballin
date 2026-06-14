@@ -5,8 +5,8 @@ using System;
 public partial class SpawnerScript : Node2D
 {
 	private Node2D ballParent;
-	private PackedScene[] balls = new PackedScene[5];
-	private int[] spawnCosts = {1, 15, 45, 60, 85};
+	private PackedScene[] balls = new PackedScene[6];
+	private int[] spawnCosts = {1, 5, 15, 45, 60, 85};
 
 	private int currentWave = 10;
 	private int spawnCredits;
@@ -21,7 +21,7 @@ public partial class SpawnerScript : Node2D
 		// fetch all the assets it needs
 		ballParent = GetNode<Node2D>("Balls");
 
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < balls.Length; i++)
 		{
 			balls[i] = GD.Load<PackedScene>("res://Scenes/Balls/ballL" + (i + 1) + ".tscn");
 		}
@@ -53,7 +53,7 @@ public partial class SpawnerScript : Node2D
 
 		float tickets = 1f;
 
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < balls.Length; i++)
 		{
 			if (spawnCosts[i] <= spawnCredits * 0.3)
 			{
@@ -66,25 +66,13 @@ public partial class SpawnerScript : Node2D
 
 		GD.Print("Credits: " + spawnCredits + " Tickets: " + tickets + " Roll: " + roll);
 
-		if (roll <= 2f)
+		for (int i = 0; i < balls.Length; i++)
 		{
-			ballIndex = 0;
-		}
-		else if (roll <= 1f + 1f * Mathf.Pow(ticketMultiplier, 1))
-		{
-			ballIndex = 1;
-		}
-		else if (roll <= 1f + 1f * Mathf.Pow(ticketMultiplier, 2))
-		{
-			ballIndex = 2;
-		}
-		else if (roll <= 1f + 1f * Mathf.Pow(ticketMultiplier, 3))
-		{
-			ballIndex = 3;
-		}
-		else
-		{
-			ballIndex = 4;
+			if (roll <= 1f + 1f * Mathf.Pow(ticketMultiplier, i))
+			{
+				ballIndex = i;
+				break;
+			}
 		}
 
 		spawnCredits -= spawnCosts[ballIndex];
