@@ -4,9 +4,18 @@ using System;
 
 public partial class SpawnerScript : Node2D
 {
+	
+	[ExportCategory("Balls")]
+	[Export]
 	private Node2D ballParent;
-	private PackedScene[] balls = new PackedScene[6];
-	private int[] spawnCosts = {1, 5, 15, 45, 60, 85};
+	[Export]
+	private PackedScene[] balls;
+	[Export]
+	private int[] spawnCosts;
+	[Export]
+	private int[] ballHp;
+	[Export]
+	private int[] ballEarn;
 
 	private int currentWave = 1;
 	private int spawnCredits;
@@ -31,10 +40,10 @@ public partial class SpawnerScript : Node2D
 		// fetch all the assets it needs
 		ballParent = GetNode<Node2D>("Balls");
 
-		for (int i = 0; i < balls.Length; i++)
+		/*for (int i = 0; i < balls.Length; i++)
 		{
 			balls[i] = GD.Load<PackedScene>("res://Scenes/Balls/ballL" + (i + 1) + ".tscn");
-		}
+		}*/
 
 		spawnCooldown = GetNode<Timer>("Timers/Spawn Cooldown");
 		detonationTimer = GetNode<Timer>("Timers/Detonation Timer");
@@ -87,10 +96,8 @@ public partial class SpawnerScript : Node2D
 			}
 		}
 
-		// Spawn the ball
-		spawnCredits -= spawnCosts[ballIndex]; 
-		RigidBody2D ball = balls[ballIndex].Instantiate<RigidBody2D>();
-		ballParent.AddChild(ball);
+		// Spawn the ball (crazy)
+		SpawnBall(ballIndex);
 
 		// Reset the cooldown
 		if (waveOngoing)
@@ -124,4 +131,13 @@ public partial class SpawnerScript : Node2D
 		}
 	}
 
+	private void SpawnBall(int index)
+	{
+		RigidBody2D ball = balls[index].Instantiate<RigidBody2D>(); // Actually add the ball
+		ballParent.AddChild(ball);
+		BallScript ballScript = (BallScript) ball; // Give ball its values
+		ballScript.BallInit(ballHp[index], ballEarn[index], this);
+		spawnCredits -= spawnCosts[index]; // reduce spawn credits
+	}
+	// If i was ever gonna modify for object pooling it would be here
 }

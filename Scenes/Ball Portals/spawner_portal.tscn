@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://cgl3kg53qwdxp"]
 
 [ext_resource type="Script" uid="uid://cwo3vnrked4a4" path="res://Scripts/Ball Portals/SpawnerScript.cs" id="1_3hy5f"]
+[ext_resource type="PackedScene" uid="uid://ci6lmae2kkswm" path="res://Scenes/Balls/ballL1.tscn" id="2_5fmou"]
 [ext_resource type="Texture2D" uid="uid://c4hccj16f70si" path="res://icon.svg" id="2_sqoik"]
+[ext_resource type="PackedScene" uid="uid://ddev5mkrkds8t" path="res://Scenes/Balls/ballL2.tscn" id="3_m41n2"]
+[ext_resource type="PackedScene" uid="uid://unc8qyrs6d8i" path="res://Scenes/Balls/ballL3.tscn" id="4_s532u"]
+[ext_resource type="PackedScene" uid="uid://d1p2f1u8mx3dr" path="res://Scenes/Balls/ballL4.tscn" id="5_hktbj"]
+[ext_resource type="PackedScene" uid="uid://csg8kqwd87n2m" path="res://Scenes/Balls/ballL5.tscn" id="6_0nay0"]
+[ext_resource type="PackedScene" uid="uid://d2vbv54wd6vq0" path="res://Scenes/Balls/ballL6.tscn" id="7_ff2ym"]
 
-[node name="Spawner Portal" type="Node2D" unique_id=1955785797]
+[node name="Spawner Portal" type="Node2D" unique_id=1955785797 node_paths=PackedStringArray("ballParent")]
 script = ExtResource("1_3hy5f")
+ballParent = NodePath("Balls")
+balls = [ExtResource("2_5fmou"), ExtResource("3_m41n2"), ExtResource("4_s532u"), ExtResource("5_hktbj"), ExtResource("6_0nay0"), ExtResource("7_ff2ym")]
+spawnCosts = PackedInt32Array(1, 5, 15, 45, 60, 85)
+ballHp = PackedInt32Array(5, 10, 15, 25, 45, 70)
+ballEarn = PackedInt32Array(5, 10, 15, 25, 40, 60)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=135928930]
 position = Vector2(0, 1)

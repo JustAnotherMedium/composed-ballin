@@ -6,18 +6,15 @@ using System;
 // so these variables are exported and saved with the specific scene
 public partial class BallScript : RigidBody2D
 {
-	[ExportGroup("Ball Properties")]
-	[Export]
-	public int HitPoints { get; set; } // Think of it like the max hp
 	private int hp;
+	private int money;
+	private SpawnerScript parent;
 
-	[Signal]
-	public delegate void BallKillEventHandler(int moneyEarned);
-
-
-	public override void _Ready()
+	public void BallInit(int hp, int money, SpawnerScript parent)
 	{
-		hp = HitPoints;
+		this.hp = hp;
+		this.money = money;
+		this.parent = parent;
 	}
 
 	public override void _Process(double delta)
