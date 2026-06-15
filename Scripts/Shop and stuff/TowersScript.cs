@@ -14,11 +14,21 @@ public partial class TowersScript : StaticBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		editor = GetParent<Editor>();
+		TowerInit();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
+	{
+		HeldBehaviour();
+	}
+
+	private void TowerInit() // @OnReady stuff for all towers
+	{
+		editor = GetParent<Editor>();
+	}
+
+	private void HeldBehaviour() // Code to run each frame for a tower that is picked up
 	{
 		if (held)
 		{
@@ -37,8 +47,8 @@ public partial class TowersScript : StaticBody2D
     {
         if (@event is InputEventMouseButton)
 		{
-			InputEventMouseButton mouseButton = @event as InputEventMouseButton;
-			if (!held)
+			InputEventMouseButton mouseButton = @event as InputEventMouseButton; // get it as mouse button
+			if (!held) // On left click: if this tower isn''t picked up and there isnt already a tower picked up, pick up this tower
 			{
 				if (editor.HavePickedUp()) { return; }
 
@@ -50,12 +60,12 @@ public partial class TowersScript : StaticBody2D
 			}
 			else
 			{
-				if (mouseButton.ButtonIndex == MouseButton.Right)
+				if (mouseButton.ButtonIndex == MouseButton.Right) // on right click: if this tower is picked up then put it down
 				{
 					held = false;
 					editor.LetGo();
 				}
-				else if (mouseButton.ButtonIndex == MouseButton.WheelUp)
+				else if (mouseButton.ButtonIndex == MouseButton.WheelUp) // rotate tower with mouse wheel
 				{
 					Transform = Transform.Rotated(rotateAngle);
 				}
