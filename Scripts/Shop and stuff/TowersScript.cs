@@ -48,9 +48,9 @@ public partial class TowersScript : StaticBody2D
         if (@event is InputEventMouseButton)
 		{
 			InputEventMouseButton mouseButton = @event as InputEventMouseButton; // get it as mouse button
-			if (!held) // On left click: if this tower isn''t picked up and there isnt already a tower picked up, pick up this tower
+			if (!held) // On left click: if this tower isn't picked up and there isnt already a tower picked up and we are in edit mode, pick up this tower
 			{
-				if (editor.HavePickedUp()) { return; }
+				if (editor.HavePickedUp() || !editor.CanEdit()) { return; }
 
 				if (mouseButton.ButtonIndex == MouseButton.Left)
 				{

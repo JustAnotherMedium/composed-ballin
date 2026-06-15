@@ -48,6 +48,9 @@ public partial class SpawnerScript : Node2D
 		spawnCooldown = GetNode<Timer>("Timers/Spawn Cooldown");
 		detonationTimer = GetNode<Timer>("Timers/Detonation Timer");
 
+		Editor editor = GetNode<Editor>("../Shop/Editor");
+		editor.EditModeExit += StartNextWave;
+
 		currentWave = Mathf.Max(1, currentWave); // <=0 wave number will break the spawning code
 		spawnCredits = 20 * currentWave; // This is only here because i might want to start on a different wave
 		GD.Print("Wave " + currentWave + " start!");
@@ -60,11 +63,7 @@ public partial class SpawnerScript : Node2D
 
 		if (ballParent.GetChildCount() == 0 && spawnCredits <= 0)
 		{
-			currentWave++;
-			spawnCredits = 20 * currentWave; // (20 + (5 * beaconCount)) * currentWave; (use this one later)
 			EmitSignal(SignalName.WaveEnd, waveEndMoneyEarn, 0);
-			GD.Print("Wave " + currentWave + " start!");
-			spawnCooldown.Start();
 		}
 	}
 
@@ -129,6 +128,14 @@ public partial class SpawnerScript : Node2D
 		{
 			i.QueueFree();
 		}
+	}
+
+	private void StartNextWave()
+	{
+		currentWave++;
+		spawnCredits = 20 * currentWave; // (20 + (5 * beaconCount)) * currentWave; (use this one later)
+		GD.Print("Wave " + currentWave + " start!");
+		spawnCooldown.Start();
 	}
 
 	private void SpawnBall(int index)
