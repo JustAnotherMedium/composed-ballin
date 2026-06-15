@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dfhsw3f6w6l3a"]
+
+[ext_resource type="Script" uid="uid://dye3k287nmbtd" path="res://Scripts/Shop and stuff/TowersScript.cs" id="1_5ekwo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eo5uw"]
+size = Vector3(250, 26, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ekwo"]
+size = Vector2(250, 26)
+
+[node name="Platform Rectangle" type="StaticBody2D" unique_id=1886937177]
+input_pickable = true
+script = ExtResource("1_5ekwo")
+
+[node name="Rect" type="MeshInstance2D" parent="." unique_id=1586912519]
+mesh = SubResource("BoxMesh_eo5uw")
+
+[node name="Solid" type="CollisionShape2D" parent="." unique_id=278395185]
+shape = SubResource("RectangleShape2D_5ekwo")
