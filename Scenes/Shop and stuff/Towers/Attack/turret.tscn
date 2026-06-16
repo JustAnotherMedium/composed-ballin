@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bp1poa5bj101a"]
+
+[ext_resource type="Script" uid="uid://b0nptlhol0s7b" path="res://Scripts/Shop and stuff/Towers/Attack/Turret.cs" id="1_o5m6x"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_o5m6x"]
+radius = 650.0
+height = 1300.0
+
+[sub_resource type="Gradient" id="Gradient_pu5xh"]
+colors = PackedColorArray(0.32999998, 1, 0.94416654, 0.11764706, 0.32941177, 1, 0.94509804, 0.11764706)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3tuu7"]
+gradient = SubResource("Gradient_pu5xh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pu5xh"]
+size = Vector2(301, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5m6x"]
+size = Vector2(301, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5m6x"]
+radius = 650.0
+
+[node name="Turret" type="StaticBody2D" unique_id=1396493512]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+script = ExtResource("1_o5m6x")
+damage = 5.0
+
+[node name="Range Indicator" type="MeshInstance2D" parent="." unique_id=1720990540]
+visible = false
+rotation = 1.5707964
+mesh = SubResource("SphereMesh_o5m6x")
+texture = SubResource("GradientTexture1D_3tuu7")
+
+[node name="Barrell" type="MeshInstance2D" parent="." unique_id=196667270]
+rotation = 1.5707964
+mesh = SubResource("QuadMesh_pu5xh")
+
+[node name="Click" type="CollisionShape2D" parent="." unique_id=507965035]
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_o5m6x")
+
+[node name="Range" type="Area2D" parent="." unique_id=1001232368]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range" unique_id=1716300670]
+visible = false
+shape = SubResource("CircleShape2D_o5m6x")
+
+[node name="Fire Cooldown" type="Timer" parent="." unique_id=1668397237]
+
+[connection signal="timeout" from="Fire Cooldown" to="." method="ResetCooldown"]

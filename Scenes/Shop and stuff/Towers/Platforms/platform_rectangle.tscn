@@ -16,4 +16,5 @@ script = ExtResource("1_5ekwo")
 mesh = SubResource("BoxMesh_eo5uw")
 
 [node name="Solid" type="CollisionShape2D" parent="." unique_id=278395185]
+visible = false
 shape = SubResource("RectangleShape2D_5ekwo")

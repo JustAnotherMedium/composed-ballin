@@ -37,7 +37,6 @@ public partial class SpinnerScript : TowersScript
 	{
 		if (@event is InputEventMouseButton)
 		{
-			GD.Print(held + " " + editor.HavePickedUp());
 			InputEventMouseButton mouseButton = @event as InputEventMouseButton; // get it as mouse button
 			if (!held) // On left click: if this tower isn't picked up and there isnt already a tower picked up and we are in edit mode, pick up this tower
 			{

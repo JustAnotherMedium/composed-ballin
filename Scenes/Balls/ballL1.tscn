@@ -18,6 +18,7 @@ radius = 15.132746
 [node name="Ball L1" type="RigidBody2D" unique_id=219977215]
 collision_mask = 5
 mass = 5.0
+can_sleep = false
 script = ExtResource("1_3c8d5")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1429461760]

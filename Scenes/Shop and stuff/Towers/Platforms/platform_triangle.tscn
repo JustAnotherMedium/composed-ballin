@@ -14,4 +14,5 @@ rotation = 3.1415927
 mesh = SubResource("PrismMesh_fr07y")
 
 [node name="Solid" type="CollisionPolygon2D" parent="." unique_id=2048732856]
+visible = false
 polygon = PackedVector2Array(0, -35, -35, 35, 35, 35)

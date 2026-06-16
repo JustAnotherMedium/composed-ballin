@@ -28,6 +28,20 @@ public partial class BallScript : RigidBody2D
 
 	public void TakeDamage(float damage)
 	{
+		hp -= damage;
+		DamageNumbers.DisplayFloatingNumber(damage, GlobalPosition, DamageNumbers.NumberType.BALL_DAMAGE); // ignore the warning
+
+		if (hp <= 0)
+		{
+			DamageNumbers.DisplayFloatingNumber(money, GlobalPosition, DamageNumbers.NumberType.MONEY_GAIN);
+			parent.BallKillGiveMoney(money);
+			QueueFree();
+		}
+	}
+	// Oh boy i sure hope this doesnt result in an extremly broken interaction later on!!!
+
+	public void TakeBurnerDamage(float damage)
+	{
 		if (canTakeDamage)
 		{
 			hp -= damage;

@@ -23,7 +23,7 @@ public partial class DespawnerPortal : Node2D
 
 		foreach (Area2D i in objects)
 		{
-			BallScript ball = i.GetParent<BallScript>();
+			BallScript ball = i.GetParent() as BallScript;
 
 			if (ball != null)
 			{

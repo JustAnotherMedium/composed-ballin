@@ -22,7 +22,7 @@ public partial class Burner : TowersScript
 		foreach (Area2D i in areas)
 		{
 			BallScript ball = i.GetParent() as BallScript;
-			ball?.TakeDamage(damage);
+			ball?.TakeBurnerDamage(damage);
 		}
 	}
 }
