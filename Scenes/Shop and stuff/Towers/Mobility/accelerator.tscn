@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cgeup4lh65xmk"]
+
+[ext_resource type="Script" uid="uid://kjiuuv4c8vrw" path="res://Scripts/Shop and stuff/Towers/Mobility/Accelerator.cs" id="1_0hths"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3d8nw"]
+size = Vector2(140, 140)
+
+[sub_resource type="Gradient" id="Gradient_3d8nw"]
+colors = PackedColorArray(0.9612401, 0.13119105, 0.99999994, 0.50980395, 0.9607843, 0.12941177, 1, 0.50980395)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0hths"]
+gradient = SubResource("Gradient_3d8nw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0hths"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3d8nw"]
+size = Vector2(140, 140)
+
+[node name="Accelerator" type="StaticBody2D" unique_id=1386401311]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+script = ExtResource("1_0hths")
+acceleration = 11.0
+
+[node name="Field" type="MeshInstance2D" parent="." unique_id=1793181991]
+mesh = SubResource("QuadMesh_3d8nw")
+texture = SubResource("GradientTexture1D_0hths")
+
+[node name="Arrow" type="Polygon2D" parent="Field" unique_id=180208074]
+position = Vector2(-19, -7.5)
+rotation = 1.5707964
+scale = Vector2(7.5, 7.5)
+polygon = PackedVector2Array(-1.2857143, -2.8571424, 0.9999999, -6.5714283, 3.2857141, -2.8571424, 2, -3, 1.9999998, 1.8571429, -5.9604645e-08, 1.8571429, 0, -3)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Field" unique_id=214367604]
+position = Vector2(-7.867813e-06, -67.5)
+scale = Vector2(140, 5.0000024)
+mesh = SubResource("QuadMesh_0hths")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Field" unique_id=226767746]
+position = Vector2(0, 67.5)
+scale = Vector2(140, 5.0000024)
+mesh = SubResource("QuadMesh_0hths")
+
+[node name="Click" type="CollisionShape2D" parent="." unique_id=887707187]
+visible = false
+shape = SubResource("RectangleShape2D_3d8nw")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1837675165]
+
+[node name="Shape" type="CollisionShape2D" parent="HitBox" unique_id=1850761567]
+visible = false
+shape = SubResource("RectangleShape2D_3d8nw")

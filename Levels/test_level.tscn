@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dfhsw3f6w6l3a" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_rectangle.tscn" id="5_3158n"]
 [ext_resource type="Script" uid="uid://dlkla0roaxpmo" path="res://Scripts/Shop and stuff/Editor.cs" id="5_ub4j8"]
 [ext_resource type="PackedScene" uid="uid://dahposuv12cav" path="res://Scenes/Shop and stuff/Towers/Attack/spikes.tscn" id="7_pvdih"]
-[ext_resource type="PackedScene" uid="uid://b3u8n5f5rjybp" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_triangle.tscn" id="8_4t6x8"]
-[ext_resource type="PackedScene" uid="uid://43hkn1xxetre" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_circle.tscn" id="9_tc6tp"]
+[ext_resource type="PackedScene" uid="uid://cgeup4lh65xmk" path="res://Scenes/Shop and stuff/Towers/Mobility/accelerator.tscn" id="10_tc6tp"]
 [ext_resource type="PackedScene" uid="uid://dopti73fwal72" path="res://Scenes/Shop and stuff/Towers/Mobility/spinner_fast.tscn" id="11_k8b6b"]
+[ext_resource type="PackedScene" uid="uid://b6nbh7b32jx7y" path="res://Scenes/Shop and stuff/Towers/Attack/burner.tscn" id="11_lx7qo"]
 
 [node name="Test Level" type="Node2D" unique_id=1962027383]
 
@@ -50,7 +50,7 @@ script = ExtResource("5_ub4j8")
 position = Vector2(284, 1014)
 
 [node name="Platform Rectangle" parent="Shop/Editor" unique_id=1886937177 instance=ExtResource("5_3158n")]
-position = Vector2(647, 208)
+position = Vector2(647, 211)
 
 [node name="Spikes2" parent="Shop/Editor" unique_id=658174354 instance=ExtResource("7_pvdih")]
 position = Vector2(154, 988)
@@ -64,13 +64,15 @@ position = Vector2(28, 917)
 [node name="Spikes5" parent="Shop/Editor" unique_id=1907950864 instance=ExtResource("7_pvdih")]
 position = Vector2(400, 1002)
 
-[node name="Platform Triangle" parent="Shop/Editor" unique_id=162042724 instance=ExtResource("8_4t6x8")]
-position = Vector2(345, 476)
-
-[node name="Platform Circle" parent="Shop/Editor" unique_id=1411134451 instance=ExtResource("9_tc6tp")]
-
 [node name="Spinner Fast" parent="Shop/Editor" unique_id=1955510055 instance=ExtResource("11_k8b6b")]
 position = Vector2(1218, 1659)
 
+[node name="Accelerator" parent="Shop/Editor" unique_id=1386401311 instance=ExtResource("10_tc6tp")]
+position = Vector2(-517, 78)
+rotation = -1.5707964
+
 [node name="Spinner Slow" parent="Shop/Editor" unique_id=1434955789 instance=ExtResource("3_tc6tp")]
 position = Vector2(992, 1305)
+
+[node name="Burner" parent="Shop/Editor" unique_id=1078403902 instance=ExtResource("11_lx7qo")]
+position = Vector2(-493, -66)

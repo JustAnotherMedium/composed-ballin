@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://b6nbh7b32jx7y"]
+
+[ext_resource type="Script" uid="uid://c6i7svlewg7v1" path="res://Scripts/Shop and stuff/Towers/Attack/Burner.cs" id="1_436wr"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tyf1g"]
+radius = 80.0
+height = 160.0
+
+[sub_resource type="Gradient" id="Gradient_04oyv"]
+colors = PackedColorArray(1, 0, 0, 0.27450982, 1, 0, 0, 0.27450982)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_db3hk"]
+gradient = SubResource("Gradient_04oyv")
+
+[sub_resource type="SphereMesh" id="SphereMesh_hy47a"]
+radius = 65.0
+height = 130.0
+
+[sub_resource type="Gradient" id="Gradient_436wr"]
+colors = PackedColorArray(1, 0.45000005, 0, 0.27450982, 1, 0.4509804, 0, 0.27450982)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tyf1g"]
+gradient = SubResource("Gradient_436wr")
+
+[sub_resource type="SphereMesh" id="SphereMesh_436wr"]
+radius = 50.0
+height = 100.0
+
+[sub_resource type="Gradient" id="Gradient_tyf1g"]
+colors = PackedColorArray(1, 0.83316666, 0.23000002, 0.29411766, 1, 0.83137256, 0.23137255, 0.29411766)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_04oyv"]
+gradient = SubResource("Gradient_tyf1g")
+
+[sub_resource type="SphereMesh" id="SphereMesh_04oyv"]
+radius = 38.0
+height = 76.0
+
+[sub_resource type="Gradient" id="Gradient_db3hk"]
+colors = PackedColorArray(0.39308554, 0.39308554, 0.39308533, 1, 0.39215687, 0.39215687, 0.39215687, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dmivc"]
+gradient = SubResource("Gradient_db3hk")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hy47a"]
+radius = 45.17743
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_436wr"]
+radius = 75.23962
+
+[node name="Burner" type="StaticBody2D" unique_id=1078403902]
+script = ExtResource("1_436wr")
+damage = 0.1
+
+[node name="FlameRed" type="MeshInstance2D" parent="." unique_id=1846861217]
+mesh = SubResource("SphereMesh_tyf1g")
+texture = SubResource("GradientTexture1D_db3hk")
+
+[node name="FlameOrange" type="MeshInstance2D" parent="FlameRed" unique_id=1606500728]
+mesh = SubResource("SphereMesh_hy47a")
+texture = SubResource("GradientTexture1D_tyf1g")
+
+[node name="FlameYellow" type="MeshInstance2D" parent="FlameRed" unique_id=1004755726]
+mesh = SubResource("SphereMesh_436wr")
+texture = SubResource("GradientTexture1D_04oyv")
+
+[node name="Metal" type="MeshInstance2D" parent="." unique_id=51853576]
+mesh = SubResource("SphereMesh_04oyv")
+texture = SubResource("GradientTexture1D_dmivc")
+
+[node name="Click" type="CollisionShape2D" parent="." unique_id=1630440033]
+visible = false
+shape = SubResource("CircleShape2D_hy47a")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1234110737]
+
+[node name="Flame" type="CollisionShape2D" parent="HitBox" unique_id=151735676]
+visible = false
+shape = SubResource("CircleShape2D_436wr")

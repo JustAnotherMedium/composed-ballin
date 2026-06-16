@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dahposuv12cav"]
 
-[ext_resource type="Script" uid="uid://cus6skaj3dx74" path="res://Scripts/Shop and stuff/Towers/Spikes.cs" id="1_widu6"]
+[ext_resource type="Script" uid="uid://cus6skaj3dx74" path="res://Scripts/Shop and stuff/Towers/Attack/Spikes.cs" id="1_widu6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_widu6"]
 radius = 38.52921
