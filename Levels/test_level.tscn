@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8jq5c2qnk5e1" path="res://Scenes/Ball Portals/despawner_portal.tscn" id="3_4k50d"]
 [ext_resource type="PackedScene" uid="uid://dfhsw3f6w6l3a" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_rectangle.tscn" id="5_3158n"]
 [ext_resource type="Script" uid="uid://dlkla0roaxpmo" path="res://Scripts/Shop and stuff/Editor.cs" id="5_ub4j8"]
+[ext_resource type="PackedScene" uid="uid://dahposuv12cav" path="res://Scenes/Shop and stuff/spikes.tscn" id="7_pvdih"]
 
 [node name="Test Level" type="Node2D" unique_id=1962027383]
 
@@ -44,9 +45,24 @@ offset_bottom = 40.0
 [node name="Editor" type="Node" parent="Shop" unique_id=8292078]
 script = ExtResource("5_ub4j8")
 
+[node name="Spikes" parent="Shop/Editor" unique_id=1880036887 instance=ExtResource("7_pvdih")]
+position = Vector2(284, 1014)
+
 [node name="Platform Rectangle" parent="Shop/Editor" unique_id=1886937177 instance=ExtResource("5_3158n")]
 position = Vector2(576, 453)
 
 [node name="Platform Rectangle2" parent="Shop/Editor" unique_id=1058076579 instance=ExtResource("5_3158n")]
 position = Vector2(764, 450)
 id = 1
+
+[node name="Spikes2" parent="Shop/Editor" unique_id=658174354 instance=ExtResource("7_pvdih")]
+position = Vector2(154, 988)
+
+[node name="Spikes3" parent="Shop/Editor" unique_id=1452708896 instance=ExtResource("7_pvdih")]
+position = Vector2(-90, 845)
+
+[node name="Spikes4" parent="Shop/Editor" unique_id=1278147391 instance=ExtResource("7_pvdih")]
+position = Vector2(28, 917)
+
+[node name="Spikes5" parent="Shop/Editor" unique_id=1907950864 instance=ExtResource("7_pvdih")]
+position = Vector2(400, 1002)

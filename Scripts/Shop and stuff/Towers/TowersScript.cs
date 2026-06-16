@@ -23,12 +23,12 @@ public partial class TowersScript : StaticBody2D
 		HeldBehaviour();
 	}
 
-	private void TowerInit() // @OnReady stuff for all towers
+	protected void TowerInit() // @OnReady stuff for all towers
 	{
 		editor = GetParent<Editor>();
 	}
 
-	private void HeldBehaviour() // Code to run each frame for a tower that is picked up
+	protected void HeldBehaviour() // Code to run each frame for a tower that is picked up
 	{
 		if (held)
 		{
@@ -43,9 +43,9 @@ public partial class TowersScript : StaticBody2D
 		}
 	}
 
-    public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)
-    {
-        if (@event is InputEventMouseButton)
+	protected void InputBehaviour(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton)
 		{
 			InputEventMouseButton mouseButton = @event as InputEventMouseButton; // get it as mouse button
 			if (!held) // On left click: if this tower isn't picked up and there isnt already a tower picked up and we are in edit mode, pick up this tower
@@ -75,6 +75,11 @@ public partial class TowersScript : StaticBody2D
 				}
 			}
 		}
+	}
+
+    public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)
+    {
+		InputBehaviour(@event);
     }
 
 }

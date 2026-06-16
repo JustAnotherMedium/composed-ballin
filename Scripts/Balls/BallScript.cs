@@ -6,9 +6,12 @@ using System;
 // so these variables are exported and saved with the specific scene
 public partial class BallScript : RigidBody2D
 {
-	private int hp;
+	private float hp;
 	private int money;
 	private SpawnerScript parent;
+
+	private Timer iFrames;
+	private bool canTakeDamage = true;
 
 	public void BallInit(int hp, int money, SpawnerScript parent)
 	{
@@ -17,7 +20,18 @@ public partial class BallScript : RigidBody2D
 		this.parent = parent;
 	}
 
-	public override void _Process(double delta)
+	public void TakeDamage(float damage)
 	{
+		hp -= canTakeDamage ? damage : 0;
+		// damage numbers code
+		DamageNumbers.DisplayFloatingNumber(damage, GlobalPosition, DamageNumbers.NumberType.BALL_DAMAGE); // ignore the warning
+
+		if (hp <= 0)
+		{
+			DamageNumbers.DisplayFloatingNumber(money, GlobalPosition, DamageNumbers.NumberType.MONEY_GAIN);
+			parent.BallKillGiveMoney(money);
+			QueueFree();
+		}
 	}
 }
+

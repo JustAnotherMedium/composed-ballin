@@ -18,8 +18,6 @@ radius = 15.132746
 [node name="Ball L1" type="RigidBody2D" unique_id=219977215]
 mass = 5.0
 script = ExtResource("1_3c8d5")
-HitPoints = 10
-SpawnCost = 1
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1429461760]
 mesh = SubResource("SphereMesh_fki37")
@@ -34,3 +32,6 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=676951659]
 shape = SubResource("CircleShape2D_fki37")
+
+[node name="I Frames" type="Timer" parent="." unique_id=1326519149]
+wait_time = 0.1

@@ -17,7 +17,8 @@ public partial class PlayerVars : Control
 
 		SpawnerScript spawner = GetNode<SpawnerScript>("../Spawner Portal");
 		DespawnerPortal despawner = GetNode<DespawnerPortal>("../Despawner Portal");
-
+		
+		spawner.BallKill += GainMoney;
 		spawner.BallDetonation += TakeDamage;
 		spawner.WaveEnd += WaveEnd;
 		despawner.BallDespawn += TakeDamage;

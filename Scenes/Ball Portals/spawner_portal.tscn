@@ -28,7 +28,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Detonation Timer" type="Timer" parent="Timers" unique_id=788197390]
-wait_time = 30.0
+wait_time = 10.0
 one_shot = true
 
 [node name="Balls" type="Node2D" parent="." unique_id=347291567]

@@ -28,6 +28,7 @@ public partial class DespawnerPortal : Node2D
 			if (ball != null)
 			{
 				EmitSignal(SignalName.BallDespawn, damagePerDespawn);
+				DamageNumbers.DisplayFloatingNumber(damagePerDespawn, ball.GlobalPosition, DamageNumbers.NumberType.PLAYER_DAMAGE);
 				ball.QueueFree();
 			}
 		}

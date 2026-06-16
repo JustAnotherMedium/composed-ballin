@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dahposuv12cav"]
+
+[ext_resource type="Script" uid="uid://cus6skaj3dx74" path="res://Scripts/Shop and stuff/Towers/Spikes.cs" id="1_widu6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_widu6"]
+radius = 38.52921
+
+[node name="Spikes" type="StaticBody2D" unique_id=1880036887]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+script = ExtResource("1_widu6")
+
+[node name="Spike" type="Polygon2D" parent="." unique_id=1305272242]
+polygon = PackedVector2Array(-39, 0, -39, 0, -13, -13, 0, -39, 13, -13, 39, 0, 13, 13, 0, 39, -13, 13)
+
+[node name="Click" type="CollisionPolygon2D" parent="." unique_id=1967412573]
+polygon = PackedVector2Array(-39, 0, -39, 0, -13, -13, 0, -39, 13, -13, 39, 0, 13, 13, 0, 39, -13, 13)
+
+[node name="hitBox" type="Area2D" parent="." unique_id=1130367283]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox" unique_id=1932075794]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("CircleShape2D_widu6")
+
+[connection signal="area_entered" from="hitBox" to="." method="BallEntered"]

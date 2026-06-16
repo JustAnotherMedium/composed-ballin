@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Reflection;
 
 public partial class SpawnerScript : Node2D
 {
@@ -16,6 +17,8 @@ public partial class SpawnerScript : Node2D
 	private int[] ballHp;
 	[Export]
 	private int[] ballEarn;
+	[Signal]
+	public delegate void BallKillEventHandler(int moneyEarned);
 
 	private int currentWave = 1;
 	private int spawnCredits;
@@ -33,6 +36,7 @@ public partial class SpawnerScript : Node2D
 	private readonly int baseFastKillHpBonus = 5;
 	private int waveEndMoneyEarn = 50;
 	private int fastKillHpBonus = 5;
+	private bool awardedWaveEnd = false;
 
 
 	public override void _Ready()
@@ -61,12 +65,14 @@ public partial class SpawnerScript : Node2D
 	{
 		if (!waveOngoing) { return; }
 
-		if (ballParent.GetChildCount() == 0 && spawnCredits <= 0)
+		if (!awardedWaveEnd && ballParent.GetChildCount() == 0 && spawnCredits <= 0)
 		{
 			EmitSignal(SignalName.WaveEnd, waveEndMoneyEarn, 0);
+			DamageNumbers.DisplayFloatingNumber(waveEndMoneyEarn, GetViewport().GetCamera2D().GlobalPosition, DamageNumbers.NumberType.WAVE_END_MONEY);
+			awardedWaveEnd = true;
 		}
 	}
-
+	
 	public void SpawnBall()
 	{
 		if (spawnCredits <= 0) { return; } // In theory this should never happen but just in case
@@ -122,10 +128,14 @@ public partial class SpawnerScript : Node2D
 
 	public void Detonate() // deletes every ball
 	{
+		if (!waveOngoing || (waveOngoing && spawnCredits > 0)) { return; }
+
 		Array<Node> balls = ballParent.GetChildren();
 		EmitSignal(SignalName.BallDetonation, balls.Count * damagePerDetonation);
 		foreach (Node i in balls)
 		{
+			Node2D ball = i as Node2D;
+			DamageNumbers.DisplayFloatingNumber(damagePerDetonation, ball.GlobalPosition, DamageNumbers.NumberType.PLAYER_DAMAGE);
 			i.QueueFree();
 		}
 	}
@@ -136,6 +146,7 @@ public partial class SpawnerScript : Node2D
 		spawnCredits = 20 * currentWave; // (20 + (5 * beaconCount)) * currentWave; (use this one later)
 		GD.Print("Wave " + currentWave + " start!");
 		spawnCooldown.Start();
+		awardedWaveEnd = false;
 	}
 
 	private void SpawnBall(int index)
@@ -147,4 +158,10 @@ public partial class SpawnerScript : Node2D
 		spawnCredits -= spawnCosts[index]; // reduce spawn credits
 	}
 	// If i was ever gonna modify for object pooling it would be here
+
+	public void BallKillGiveMoney(int moneyEarned)
+	{
+		EmitSignal(SignalName.BallKill, moneyEarned);
+	}
 }
+// GetViewport().GlobalCanvasTransform.Origin

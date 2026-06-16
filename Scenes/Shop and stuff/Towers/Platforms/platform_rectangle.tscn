@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dfhsw3f6w6l3a"]
 
-[ext_resource type="Script" uid="uid://dye3k287nmbtd" path="res://Scripts/Shop and stuff/TowersScript.cs" id="1_5ekwo"]
+[ext_resource type="Script" uid="uid://dye3k287nmbtd" path="res://Scripts/Shop and stuff/Towers/TowersScript.cs" id="1_5ekwo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eo5uw"]
 size = Vector3(250, 26, 1)
