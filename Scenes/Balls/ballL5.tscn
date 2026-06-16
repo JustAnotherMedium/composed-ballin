@@ -32,3 +32,6 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=676951659]
 shape = SubResource("CircleShape2D_fki37")
+
+[node name="I Frames" type="Timer" parent="." unique_id=1326519149]
+wait_time = 0.1
