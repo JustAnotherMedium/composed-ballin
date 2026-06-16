@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dopti73fwal72"]
+
+[ext_resource type="Script" uid="uid://gj2bxneey6xh" path="res://Scripts/Shop and stuff/Towers/Mobility/SpinnerScript.cs" id="1_i0tel"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eo5uw"]
+size = Vector3(250, 26, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_iltip"]
+radius = 10.0
+height = 20.0
+
+[sub_resource type="Gradient" id="Gradient_yg3u3"]
+colors = PackedColorArray(0.7490196, 0.7490196, 0.7490196, 1, 0.7490196, 0.7490196, 0.7490196, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yh3un"]
+gradient = SubResource("Gradient_yg3u3")
+
+[sub_resource type="BoxMesh" id="BoxMesh_i0tel"]
+size = Vector3(50, 10, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ekwo"]
+size = Vector2(250, 26)
+
+[node name="Spinner Fast" type="StaticBody2D" unique_id=1955510055]
+collision_layer = 4
+input_pickable = true
+script = ExtResource("1_i0tel")
+speed = 300.0
+
+[node name="Rect" type="MeshInstance2D" parent="." unique_id=1586912519]
+mesh = SubResource("BoxMesh_eo5uw")
+
+[node name="Circle" type="MeshInstance2D" parent="Rect" unique_id=1550091781]
+mesh = SubResource("SphereMesh_iltip")
+texture = SubResource("GradientTexture1D_yh3un")
+
+[node name="Fast" type="MeshInstance2D" parent="Rect" unique_id=324218337]
+mesh = SubResource("BoxMesh_i0tel")
+texture = SubResource("GradientTexture1D_yh3un")
+
+[node name="Solid" type="CollisionShape2D" parent="." unique_id=278395185]
+visible = false
+shape = SubResource("RectangleShape2D_5ekwo")

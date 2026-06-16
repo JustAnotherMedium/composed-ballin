@@ -4,9 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dsp42o1w8p3pw" path="res://Scenes/Camera/main_camera_movement.tscn" id="1_ormqy"]
 [ext_resource type="PackedScene" uid="uid://cgl3kg53qwdxp" path="res://Scenes/Ball Portals/spawner_portal.tscn" id="2_00vsl"]
 [ext_resource type="PackedScene" uid="uid://c8jq5c2qnk5e1" path="res://Scenes/Ball Portals/despawner_portal.tscn" id="3_4k50d"]
+[ext_resource type="PackedScene" uid="uid://u6c055qlnuem" path="res://Scenes/Shop and stuff/Towers/Mobility/spinner_slow.tscn" id="3_tc6tp"]
 [ext_resource type="PackedScene" uid="uid://dfhsw3f6w6l3a" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_rectangle.tscn" id="5_3158n"]
 [ext_resource type="Script" uid="uid://dlkla0roaxpmo" path="res://Scripts/Shop and stuff/Editor.cs" id="5_ub4j8"]
-[ext_resource type="PackedScene" uid="uid://dahposuv12cav" path="res://Scenes/Shop and stuff/spikes.tscn" id="7_pvdih"]
+[ext_resource type="PackedScene" uid="uid://dahposuv12cav" path="res://Scenes/Shop and stuff/Towers/Attack/spikes.tscn" id="7_pvdih"]
+[ext_resource type="PackedScene" uid="uid://b3u8n5f5rjybp" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_triangle.tscn" id="8_4t6x8"]
+[ext_resource type="PackedScene" uid="uid://43hkn1xxetre" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_circle.tscn" id="9_tc6tp"]
+[ext_resource type="PackedScene" uid="uid://dopti73fwal72" path="res://Scenes/Shop and stuff/Towers/Mobility/spinner_fast.tscn" id="11_k8b6b"]
 
 [node name="Test Level" type="Node2D" unique_id=1962027383]
 
@@ -19,16 +23,13 @@ position = Vector2(1723, 1669)
 
 [node name="Polygon2D" type="Polygon2D" parent="Level" unique_id=326617471]
 position = Vector2(500, -340)
-color = Color(0.76240367, 0.76240367, 0.76240367, 1)
+color = Color(0.75, 0.75, 0.75, 1)
 polygon = PackedVector2Array(-2761.6572, -987.683, -2597.8486, -664.1244, -2323.3691, -410.75873, -1983.5273, -239.10242, -1805.6349, -270.38177, -1762.5757, -143.8628, -1622.1316, -28.652771, -1124.0634, -36.125916, -1166.2192, 710.8185, -782.062, 319.14426, -683.56445, -155.43423, -360.97852, 360.4723, -552.92285, 988.6516, -1442.8428, 1093.3483, -2454.9102, 430.27002, -2926.044, -843.53796, -2855, -1493)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level" unique_id=2131436493]
+visible = false
 position = Vector2(500, -340)
 polygon = PackedVector2Array(-2761.6572, -987.683, -2597.8486, -664.1244, -2323.3691, -410.75873, -1983.5273, -239.10242, -1805.6349, -270.38177, -1762.5757, -143.8628, -1622.1316, -28.652771, -1124.0634, -36.125916, -1166.2192, 710.8185, -782.062, 319.14426, -683.56445, -155.43423, -360.97852, 360.4723, -552.92285, 988.6516, -1442.8428, 1093.3483, -2454.9102, 430.27002, -2926.044, -843.53796, -2855, -1493)
-
-[node name="Barrier" type="CollisionPolygon2D" parent="Level" unique_id=280874609]
-position = Vector2(-1527, 451)
-polygon = PackedVector2Array(56, -198, 62, -837, 190, -844, 190, 10)
 
 [node name="Spawner Portal" parent="." unique_id=1955785797 instance=ExtResource("2_00vsl")]
 position = Vector2(-554, -347)
@@ -49,11 +50,7 @@ script = ExtResource("5_ub4j8")
 position = Vector2(284, 1014)
 
 [node name="Platform Rectangle" parent="Shop/Editor" unique_id=1886937177 instance=ExtResource("5_3158n")]
-position = Vector2(576, 453)
-
-[node name="Platform Rectangle2" parent="Shop/Editor" unique_id=1058076579 instance=ExtResource("5_3158n")]
-position = Vector2(764, 450)
-id = 1
+position = Vector2(647, 208)
 
 [node name="Spikes2" parent="Shop/Editor" unique_id=658174354 instance=ExtResource("7_pvdih")]
 position = Vector2(154, 988)
@@ -66,3 +63,14 @@ position = Vector2(28, 917)
 
 [node name="Spikes5" parent="Shop/Editor" unique_id=1907950864 instance=ExtResource("7_pvdih")]
 position = Vector2(400, 1002)
+
+[node name="Platform Triangle" parent="Shop/Editor" unique_id=162042724 instance=ExtResource("8_4t6x8")]
+position = Vector2(345, 476)
+
+[node name="Platform Circle" parent="Shop/Editor" unique_id=1411134451 instance=ExtResource("9_tc6tp")]
+
+[node name="Spinner Fast" parent="Shop/Editor" unique_id=1955510055 instance=ExtResource("11_k8b6b")]
+position = Vector2(1218, 1659)
+
+[node name="Spinner Slow" parent="Shop/Editor" unique_id=1434955789 instance=ExtResource("3_tc6tp")]
+position = Vector2(992, 1305)

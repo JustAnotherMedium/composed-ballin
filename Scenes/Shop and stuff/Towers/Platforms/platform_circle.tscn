@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://43hkn1xxetre"]
+
+[ext_resource type="Script" uid="uid://dye3k287nmbtd" path="res://Scripts/Shop and stuff/Towers/TowersScript.cs" id="1_y7vpb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pafnr"]
+radius = 45.0
+height = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k6ub0"]
+radius = 45.0
+
+[node name="Platform Circle" type="StaticBody2D" unique_id=1411134451]
+input_pickable = true
+script = ExtResource("1_y7vpb")
+
+[node name="Circle" type="MeshInstance2D" parent="." unique_id=481118301]
+mesh = SubResource("SphereMesh_pafnr")
+
+[node name="Solid" type="CollisionShape2D" parent="." unique_id=928157955]
+shape = SubResource("CircleShape2D_k6ub0")

@@ -6,10 +6,10 @@ public partial class TowersScript : StaticBody2D
 	[Export] // remove later or change smth idk
 	public int id { get; set; }
 
-	private Editor editor;
-	private bool held = false;
-	private bool inBounds;
-	private readonly float rotateAngle = Mathf.DegToRad(5f);
+	protected Editor editor;
+	protected bool held = false;
+	protected bool inBounds;
+	protected readonly float rotateAngle = Mathf.DegToRad(5f);
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -23,12 +23,17 @@ public partial class TowersScript : StaticBody2D
 		HeldBehaviour();
 	}
 
-	protected void TowerInit() // @OnReady stuff for all towers
+	protected virtual void TowerInit() // @OnReady stuff for all towers
 	{
 		editor = GetParent<Editor>();
 	}
 
-	protected void HeldBehaviour() // Code to run each frame for a tower that is picked up
+	public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)
+    {
+		InputBehaviour(@event);
+    }
+
+	protected virtual void HeldBehaviour() // Code to run each frame for a tower that is picked up
 	{
 		if (held)
 		{
@@ -43,7 +48,7 @@ public partial class TowersScript : StaticBody2D
 		}
 	}
 
-	protected void InputBehaviour(InputEvent @event)
+	protected virtual void InputBehaviour(InputEvent @event)
 	{
 		if (@event is InputEventMouseButton)
 		{
@@ -76,10 +81,4 @@ public partial class TowersScript : StaticBody2D
 			}
 		}
 	}
-
-    public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)
-    {
-		InputBehaviour(@event);
-    }
-
 }

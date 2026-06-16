@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b3u8n5f5rjybp"]
+
+[ext_resource type="Script" uid="uid://dye3k287nmbtd" path="res://Scripts/Shop and stuff/Towers/TowersScript.cs" id="1_w0cum"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_fr07y"]
+size = Vector3(70, 70, 1)
+
+[node name="Platform Triangle" type="StaticBody2D" unique_id=162042724]
+input_pickable = true
+script = ExtResource("1_w0cum")
+
+[node name="Triangle" type="MeshInstance2D" parent="." unique_id=1471883155]
+rotation = 3.1415927
+mesh = SubResource("PrismMesh_fr07y")
+
+[node name="Solid" type="CollisionPolygon2D" parent="." unique_id=2048732856]
+polygon = PackedVector2Array(0, -35, -35, 35, 35, 35)
