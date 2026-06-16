@@ -68,11 +68,11 @@ position = Vector2(400, 1002)
 position = Vector2(1218, 1659)
 
 [node name="Accelerator" parent="Shop/Editor" unique_id=1386401311 instance=ExtResource("10_tc6tp")]
-position = Vector2(-517, 78)
-rotation = -1.5707964
+position = Vector2(-553, -195)
+rotation = 1.5707964
 
 [node name="Spinner Slow" parent="Shop/Editor" unique_id=1434955789 instance=ExtResource("3_tc6tp")]
 position = Vector2(992, 1305)
 
 [node name="Burner" parent="Shop/Editor" unique_id=1078403902 instance=ExtResource("11_lx7qo")]
-position = Vector2(-493, -66)
+position = Vector2(581, 970)
