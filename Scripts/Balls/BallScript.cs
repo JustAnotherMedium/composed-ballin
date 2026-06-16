@@ -20,18 +20,33 @@ public partial class BallScript : RigidBody2D
 		this.parent = parent;
 	}
 
+    public override void _Ready()
+    {
+        iFrames = GetNode<Timer>("I Frames");
+		iFrames.Timeout += ResetIFrames;
+    }
+
 	public void TakeDamage(float damage)
 	{
-		hp -= canTakeDamage ? damage : 0;
-		// damage numbers code
-		DamageNumbers.DisplayFloatingNumber(damage, GlobalPosition, DamageNumbers.NumberType.BALL_DAMAGE); // ignore the warning
-
-		if (hp <= 0)
+		if (canTakeDamage)
 		{
-			DamageNumbers.DisplayFloatingNumber(money, GlobalPosition, DamageNumbers.NumberType.MONEY_GAIN);
-			parent.BallKillGiveMoney(money);
-			QueueFree();
+			hp -= damage;
+			iFrames.Start();
+			canTakeDamage = false;
+			DamageNumbers.DisplayFloatingNumber(damage, GlobalPosition, DamageNumbers.NumberType.BALL_DAMAGE); // ignore the warning
+
+			if (hp <= 0)
+			{
+				DamageNumbers.DisplayFloatingNumber(money, GlobalPosition, DamageNumbers.NumberType.MONEY_GAIN);
+				parent.BallKillGiveMoney(money);
+				QueueFree();
+			}
 		}
+	}
+
+	private void ResetIFrames()
+	{
+		canTakeDamage = true;
 	}
 }
 
