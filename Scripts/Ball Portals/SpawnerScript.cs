@@ -163,5 +163,25 @@ public partial class SpawnerScript : Node2D
 	{
 		EmitSignal(SignalName.BallKill, moneyEarned);
 	}
+
+	public int GetCredits()
+	{
+		return spawnCredits;
+	}
+
+	public int GetWave()
+	{
+		return currentWave;
+	}
+
+	public bool DetonationTimerRunning()
+	{
+		return detonationTimer.TimeLeft == 0;
+	}
+
+	public double TimeLeft()
+	{
+		return detonationTimer.TimeLeft;
+	}
 }
 // GetViewport().GlobalCanvasTransform.Origin

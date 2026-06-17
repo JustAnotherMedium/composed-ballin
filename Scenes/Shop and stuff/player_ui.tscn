@@ -25,12 +25,6 @@ line_spacing = 0.0
 font = ExtResource("2_iy0i1")
 font_size = 36
 
-[sub_resource type="Gradient" id="Gradient_l4r8f"]
-colors = PackedColorArray(0.4000001, 0, 1, 1, 0.4, 0, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7ucoc"]
-gradient = SubResource("Gradient_l4r8f")
-
 [sub_resource type="Gradient" id="Gradient_nh4xm"]
 offsets = PackedFloat32Array(0.019480519, 1)
 colors = PackedColorArray(0.09019608, 0.09019608, 0.09019608, 1, 0.09, 0.09, 0.09, 1)
@@ -44,7 +38,17 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8uba4"]
 gradient = SubResource("Gradient_t3e25")
 
-[node name="Player UI" type="Control" unique_id=484183861]
+[sub_resource type="Gradient" id="Gradient_l4r8f"]
+colors = PackedColorArray(0.4000001, 0, 1, 1, 0.4, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7ucoc"]
+gradient = SubResource("Gradient_l4r8f")
+
+[sub_resource type="LabelSettings" id="LabelSettings_nh4xm"]
+font = ExtResource("2_iy0i1")
+font_size = 28
+
+[node name="Player UI" type="Control" unique_id=484183861 node_paths=PackedStringArray("healthBar", "healthText", "moneyText", "spawnCredits", "spawnCreditsText", "waveText", "TimerText", "Clock", "TimerUI")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,6 +56,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8iyf6")
+healthBar = NodePath("Money Health/Health")
+healthText = NodePath("Money Health/Health/Health Text")
+moneyText = NodePath("Money Health/Money")
+spawnCredits = NodePath("VBoxContainer/Spawn Credits")
+spawnCreditsText = NodePath("VBoxContainer/Spawn Credits/Spawn Credits Text")
+waveText = NodePath("VBoxContainer/Wave")
+TimerText = NodePath("Detonation Timer/Time Left")
+Clock = NodePath("Detonation Timer/Timer")
+TimerUI = NodePath("Detonation Timer")
 
 [node name="Money Health" type="VBoxContainer" parent="." unique_id=132016786]
 custom_minimum_size = Vector2(300, 100)
@@ -93,30 +106,6 @@ label_settings = SubResource("LabelSettings_iy0i1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spawn Credits" type="TextureProgressBar" parent="." unique_id=65149530]
-custom_minimum_size = Vector2(315, 60)
-layout_mode = 1
-offset_bottom = 40.775
-size_flags_vertical = 3
-value = 100.0
-nine_patch_stretch = true
-texture_under = SubResource("GradientTexture1D_nbn3x")
-texture_progress = SubResource("GradientTexture1D_7ucoc")
-tint_under = Color(0.15, 0.15, 0.15, 1)
-tint_over = Color(0.6194285, 0.0011549455, 0.7530275, 1)
-
-[node name="Health Text" type="Label" parent="Spawn Credits" unique_id=478518132]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "4900"
-label_settings = SubResource("LabelSettings_iy0i1")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Detonation Timer" type="HBoxContainer" parent="." unique_id=547008137]
 layout_mode = 1
 anchors_preset = 5
@@ -131,7 +120,9 @@ grow_horizontal = 2
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 3
-value = 100.0
+max_value = 30.0
+step = 0.1
+value = 30.0
 fill_mode = 5
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_l4r8f")
@@ -145,3 +136,36 @@ text = "45"
 label_settings = SubResource("LabelSettings_iy0i1")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2124710557]
+layout_mode = 0
+offset_right = 315.0
+offset_bottom = 60.0
+
+[node name="Spawn Credits" type="TextureProgressBar" parent="VBoxContainer" unique_id=65149530]
+custom_minimum_size = Vector2(315, 60)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_nbn3x")
+texture_progress = SubResource("GradientTexture1D_7ucoc")
+tint_under = Color(0.15, 0.15, 0.15, 1)
+tint_over = Color(0.6194285, 0.0011549455, 0.7530275, 1)
+
+[node name="Spawn Credits Text" type="Label" parent="VBoxContainer/Spawn Credits" unique_id=478518132]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4900"
+label_settings = SubResource("LabelSettings_iy0i1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wave" type="Label" parent="VBoxContainer" unique_id=865834866]
+layout_mode = 2
+text = "Wave: 69"
+label_settings = SubResource("LabelSettings_nh4xm")
