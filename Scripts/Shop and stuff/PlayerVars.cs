@@ -10,13 +10,29 @@ public partial class PlayerVars : Control
 	public int MaxHitPoints { get => maxHP; }
 	public int HitPoints { get => hp; }
 
+	[Export]
+	private TextureProgressBar healthBar;
+	[Export]
+	private Label healthText;
+	[Export]
+	private Label moneyText;
+	[Export]
+	private TextureProgressBar spawnCredits;
+	[Export]
+	private Label spawnCreditsText;
+	[Export]
+	private Label TimerText;
+	[Export]
+	private TextureProgressBar Clock;
+	private Timer detonationTimer;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		hp = maxHP;
 
-		SpawnerScript spawner = GetNode<SpawnerScript>("../Spawner Portal");
-		DespawnerPortal despawner = GetNode<DespawnerPortal>("../Despawner Portal");
+		SpawnerScript spawner = GetNode<SpawnerScript>("../../Spawner Portal");
+		DespawnerPortal despawner = GetNode<DespawnerPortal>("../../Despawner Portal");
 		
 		spawner.BallKill += GainMoney;
 		spawner.BallDetonation += TakeDamage;

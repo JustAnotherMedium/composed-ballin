@@ -1,6 +1,48 @@
 [gd_scene format=3 uid="uid://blkosfrk0drfd"]
 
 [ext_resource type="Script" uid="uid://btblgrxtsvko7" path="res://Scripts/Shop and stuff/PlayerVars.cs" id="1_8iyf6"]
+[ext_resource type="FontFile" uid="uid://cftav8l25a7bc" path="res://Fonts/Poppins-ExtraBold.ttf" id="2_iy0i1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nbn3x"]
+font = ExtResource("2_iy0i1")
+font_size = 36
+font_color = Color(0.01666665, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_iy0i1"]
+colors = PackedColorArray(0.2520276, 0.25202766, 0.25202763, 1, 0.2509804, 0.2509804, 0.2509804, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nbn3x"]
+gradient = SubResource("Gradient_iy0i1")
+
+[sub_resource type="Gradient" id="Gradient_nbn3x"]
+colors = PackedColorArray(0.88, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nh4xm"]
+gradient = SubResource("Gradient_nbn3x")
+
+[sub_resource type="LabelSettings" id="LabelSettings_iy0i1"]
+line_spacing = 0.0
+font = ExtResource("2_iy0i1")
+font_size = 36
+
+[sub_resource type="Gradient" id="Gradient_l4r8f"]
+colors = PackedColorArray(0.4000001, 0, 1, 1, 0.4, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7ucoc"]
+gradient = SubResource("Gradient_l4r8f")
+
+[sub_resource type="Gradient" id="Gradient_nh4xm"]
+offsets = PackedFloat32Array(0.019480519, 1)
+colors = PackedColorArray(0.09019608, 0.09019608, 0.09019608, 1, 0.09, 0.09, 0.09, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l4r8f"]
+gradient = SubResource("Gradient_nh4xm")
+
+[sub_resource type="Gradient" id="Gradient_t3e25"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8uba4"]
+gradient = SubResource("Gradient_t3e25")
 
 [node name="Player UI" type="Control" unique_id=484183861]
 layout_mode = 3
@@ -10,3 +52,96 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8iyf6")
+
+[node name="Money Health" type="VBoxContainer" parent="." unique_id=132016786]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Money" type="Label" parent="Money Health" unique_id=377917325]
+layout_mode = 2
+text = "Money rahhh $"
+label_settings = SubResource("LabelSettings_nbn3x")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Health" type="TextureProgressBar" parent="Money Health" unique_id=993604981]
+custom_minimum_size = Vector2(0, 40.775)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_nbn3x")
+texture_progress = SubResource("GradientTexture1D_nh4xm")
+tint_under = Color(0.15, 0.15, 0.15, 1)
+tint_over = Color(0.6194285, 0.0011549455, 0.7530275, 1)
+
+[node name="Health Text" type="Label" parent="Money Health/Health" unique_id=263056976]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+label_settings = SubResource("LabelSettings_iy0i1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spawn Credits" type="TextureProgressBar" parent="." unique_id=65149530]
+custom_minimum_size = Vector2(315, 60)
+layout_mode = 1
+offset_bottom = 40.775
+size_flags_vertical = 3
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_nbn3x")
+texture_progress = SubResource("GradientTexture1D_7ucoc")
+tint_under = Color(0.15, 0.15, 0.15, 1)
+tint_over = Color(0.6194285, 0.0011549455, 0.7530275, 1)
+
+[node name="Health Text" type="Label" parent="Spawn Credits" unique_id=478518132]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4900"
+label_settings = SubResource("LabelSettings_iy0i1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Detonation Timer" type="HBoxContainer" parent="." unique_id=547008137]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.875
+offset_right = 82.875
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="Timer" type="TextureProgressBar" parent="Detonation Timer" unique_id=1229441505]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_l4r8f")
+texture_progress = SubResource("GradientTexture1D_8uba4")
+tint_under = Color(0.15, 0.15, 0.15, 1)
+tint_over = Color(0.6194285, 0.0011549455, 0.7530275, 1)
+
+[node name="Time Left" type="Label" parent="Detonation Timer" unique_id=394612638]
+layout_mode = 2
+text = "45"
+label_settings = SubResource("LabelSettings_iy0i1")
+horizontal_alignment = 1
+vertical_alignment = 1

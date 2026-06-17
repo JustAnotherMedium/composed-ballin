@@ -1,22 +1,11 @@
 [gd_scene format=3 uid="uid://b0e8r73ymrrcw"]
 
-[ext_resource type="PackedScene" uid="uid://blkosfrk0drfd" path="res://Scenes/Shop and stuff/player_ui.tscn" id="1_i4ak4"]
 [ext_resource type="PackedScene" uid="uid://dsp42o1w8p3pw" path="res://Scenes/Camera/main_camera_movement.tscn" id="1_ormqy"]
 [ext_resource type="PackedScene" uid="uid://cgl3kg53qwdxp" path="res://Scenes/Ball Portals/spawner_portal.tscn" id="2_00vsl"]
 [ext_resource type="PackedScene" uid="uid://c8jq5c2qnk5e1" path="res://Scenes/Ball Portals/despawner_portal.tscn" id="3_4k50d"]
-[ext_resource type="PackedScene" uid="uid://u6c055qlnuem" path="res://Scenes/Shop and stuff/Towers/Mobility/spinner_slow.tscn" id="3_tc6tp"]
-[ext_resource type="PackedScene" uid="uid://dfhsw3f6w6l3a" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_rectangle.tscn" id="5_3158n"]
-[ext_resource type="Script" uid="uid://dlkla0roaxpmo" path="res://Scripts/Shop and stuff/Editor.cs" id="5_ub4j8"]
-[ext_resource type="PackedScene" uid="uid://bp1poa5bj101a" path="res://Scenes/Shop and stuff/Towers/Attack/turret.tscn" id="6_lx7qo"]
-[ext_resource type="PackedScene" uid="uid://dahposuv12cav" path="res://Scenes/Shop and stuff/Towers/Attack/spikes.tscn" id="7_pvdih"]
-[ext_resource type="PackedScene" uid="uid://cgeup4lh65xmk" path="res://Scenes/Shop and stuff/Towers/Mobility/accelerator.tscn" id="10_tc6tp"]
-[ext_resource type="PackedScene" uid="uid://dopti73fwal72" path="res://Scenes/Shop and stuff/Towers/Mobility/spinner_fast.tscn" id="11_k8b6b"]
-[ext_resource type="PackedScene" uid="uid://b6nbh7b32jx7y" path="res://Scenes/Shop and stuff/Towers/Attack/burner.tscn" id="11_lx7qo"]
-[ext_resource type="PackedScene" uid="uid://hxnrtg4ko3d0" path="res://Scenes/Shop and stuff/Towers/Attack/missle.tscn" id="13_dkv23"]
+[ext_resource type="PackedScene" uid="uid://dp8yp7e61wyx7" path="res://Scenes/Shop and stuff/ui.tscn" id="5_3158n"]
 
 [node name="Test Level" type="Node2D" unique_id=1962027383]
-
-[node name="Player Variables" parent="." unique_id=1400444665 instance=ExtResource("1_i4ak4")]
 
 [node name="Main Camera Movement" parent="." unique_id=1970036365 instance=ExtResource("1_ormqy")]
 
@@ -39,49 +28,4 @@ position = Vector2(-554, -347)
 [node name="Despawner Portal" parent="." unique_id=1478079035 instance=ExtResource("3_4k50d")]
 position = Vector2(1122, 1865)
 
-[node name="Shop" type="Control" parent="." unique_id=1732846768]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Editor" type="Node" parent="Shop" unique_id=8292078]
-script = ExtResource("5_ub4j8")
-
-[node name="Turret" parent="Shop/Editor" unique_id=1396493512 instance=ExtResource("6_lx7qo")]
-position = Vector2(-138, 195)
-
-[node name="Spikes" parent="Shop/Editor" unique_id=1880036887 instance=ExtResource("7_pvdih")]
-position = Vector2(284, 1014)
-
-[node name="Platform Rectangle" parent="Shop/Editor" unique_id=1886937177 instance=ExtResource("5_3158n")]
-position = Vector2(-117, 787)
-rotation = 1.5707964
-
-[node name="Spikes2" parent="Shop/Editor" unique_id=658174354 instance=ExtResource("7_pvdih")]
-position = Vector2(154, 988)
-
-[node name="Spikes3" parent="Shop/Editor" unique_id=1452708896 instance=ExtResource("7_pvdih")]
-position = Vector2(-90, 845)
-
-[node name="Spikes4" parent="Shop/Editor" unique_id=1278147391 instance=ExtResource("7_pvdih")]
-position = Vector2(28, 917)
-
-[node name="Spikes5" parent="Shop/Editor" unique_id=1907950864 instance=ExtResource("7_pvdih")]
-position = Vector2(400, 1002)
-
-[node name="Spinner Fast" parent="Shop/Editor" unique_id=1955510055 instance=ExtResource("11_k8b6b")]
-position = Vector2(1218, 1659)
-
-[node name="Accelerator" parent="Shop/Editor" unique_id=1386401311 instance=ExtResource("10_tc6tp")]
-position = Vector2(-553, -195)
-rotation = 1.5707964
-
-[node name="Spinner Slow" parent="Shop/Editor" unique_id=1434955789 instance=ExtResource("3_tc6tp")]
-position = Vector2(992, 1305)
-
-[node name="Burner" parent="Shop/Editor" unique_id=1078403902 instance=ExtResource("11_lx7qo")]
-position = Vector2(581, 970)
-
-[node name="Missile" parent="Shop/Editor" unique_id=525146166 instance=ExtResource("13_dkv23")]
-position = Vector2(1050, 164)
+[node name="UI" parent="." unique_id=1900290242 instance=ExtResource("5_3158n")]

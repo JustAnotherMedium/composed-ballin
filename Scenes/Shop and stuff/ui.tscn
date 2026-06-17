@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dp8yp7e61wyx7"]
+
+[ext_resource type="PackedScene" uid="uid://blkosfrk0drfd" path="res://Scenes/Shop and stuff/player_ui.tscn" id="1_5us1j"]
+[ext_resource type="PackedScene" uid="uid://do02qgs7x4p4u" path="res://Scenes/Shop and stuff/shop.tscn" id="2_nmahr"]
+
+[node name="UI" type="CanvasLayer" unique_id=1900290242]
+
+[node name="Player UI" parent="." unique_id=484183861 instance=ExtResource("1_5us1j")]
+
+[node name="Shop" parent="." unique_id=293295424 instance=ExtResource("2_nmahr")]

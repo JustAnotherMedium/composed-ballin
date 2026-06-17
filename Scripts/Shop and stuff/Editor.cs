@@ -12,7 +12,7 @@ public partial class Editor : Node
 
     public override void _Ready()
     {
-        SpawnerScript spawner = GetNode<SpawnerScript>("../../Spawner Portal");
+        SpawnerScript spawner = GetNode<SpawnerScript>("../../../Spawner Portal");
         spawner.WaveEnd += EnterEditMode;
     }
 
