@@ -53,10 +53,13 @@ public partial class PlayerVars : Control
 		spawnCredits.MaxValue = 5 * spawner.GetWave() + 3;
 		spawnCredits.Value = spawner.GetCredits();
 		spawnCreditsText.Text = GD.VarToStr(spawner.GetCredits());
-		waveText.Text = "Wave: " + spawner.GetWave();
 		TimerUI.Visible = spawner.DetonationTimerRunning();
 		TimerText.Text = GD.VarToStr(spawner.TimeLeft());
 		Clock.Value = spawner.TimeLeft();
+		if (spawner.GetWaveOngoing())
+			waveText.Text = "Wave: " + spawner.GetWave();
+		else
+			waveText.Text = "Next Wave: " + (spawner.GetWave() + 1);
 	}
 
 	public void GainMoney(int amount) // used when gaining money from kills, or selling towers

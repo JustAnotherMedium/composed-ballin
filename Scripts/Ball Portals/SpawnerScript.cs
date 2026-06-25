@@ -20,11 +20,13 @@ public partial class SpawnerScript : Node2D
 	[Signal]
 	public delegate void BallKillEventHandler(int moneyEarned);
 
-	private int currentWave = 1;
+	private int currentWave = 0;
 	private int spawnCredits;
 	private float ticketMultiplier = 2.2f;
 	private bool waveOngoing = false;
+	[Export]
 	private Timer spawnCooldown;
+	[Export]
 	private Timer detonationTimer;
 
 	[Signal]
@@ -43,17 +45,6 @@ public partial class SpawnerScript : Node2D
 
 	public override void _Ready()
 	{
-		// fetch all the assets it needs
-		ballParent = GetNode<Node2D>("Balls");
-
-		/*for (int i = 0; i < balls.Length; i++)
-		{
-			balls[i] = GD.Load<PackedScene>("res://Scenes/Balls/ballL" + (i + 1) + ".tscn");
-		}*/
-
-		spawnCooldown = GetNode<Timer>("Timers/Spawn Cooldown");
-		detonationTimer = GetNode<Timer>("Timers/Detonation Timer");
-
 		Editor editor = GetNode<Editor>("../Editor");
 		editor.EditModeExit += StartNextWave;
 
@@ -68,6 +59,7 @@ public partial class SpawnerScript : Node2D
 		{
 			EmitSignal(SignalName.WaveEnd, waveEndMoneyEarn, 0);
 			EmitSignal(SignalName.ShopSetup);
+			waveOngoing = false;
 			awardedWaveEnd = true;
 			DamageNumbers.DisplayFloatingNumber(waveEndMoneyEarn, GetViewport().GetCamera2D().GlobalPosition, DamageNumbers.NumberType.WAVE_END_MONEY);
 		}
@@ -76,7 +68,7 @@ public partial class SpawnerScript : Node2D
 	public void SpawnBall()
 	{
 		if (spawnCredits <= 0) { return; } // In theory this should never happen but just in case
-
+		
 		float tickets = 1f;
 
 		for (int i = 0; i < balls.Length; i++) // Calculate tickets
@@ -146,6 +138,7 @@ public partial class SpawnerScript : Node2D
 		spawnCredits = 5 * currentWave + 3; // (20 + (5 * beaconCount)) * currentWave; (use this one later)
 		GD.Print("Wave " + currentWave + " start!");
 		spawnCooldown.Start();
+		waveOngoing = true;
 		awardedWaveEnd = false;
 	}
 
@@ -174,14 +167,20 @@ public partial class SpawnerScript : Node2D
 		return currentWave;
 	}
 
+	public bool GetWaveOngoing()
+	{
+		return waveOngoing;
+	}
+
 	public bool DetonationTimerRunning()
 	{
-		return detonationTimer.TimeLeft == 0;
+		return detonationTimer.TimeLeft != 0;
 	}
 
 	public double TimeLeft()
 	{
-		return detonationTimer.TimeLeft;
+		return Mathf.RoundToInt(detonationTimer.TimeLeft * 10) / 10.0;
+		
 	}
 }
 // GetViewport().GlobalCanvasTransform.Origin
