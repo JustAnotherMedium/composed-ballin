@@ -3,19 +3,11 @@ using System;
 
 public partial class TowersScript : StaticBody2D
 {
-	[Export] // remove later or change smth idk
-	public int id { get; set; }
-
+	protected int id;
 	protected Editor editor;
 	protected bool held = false;
 	protected bool inBounds;
 	protected readonly float rotateAngle = Mathf.DegToRad(5f);
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		TowerInit();
-	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -23,9 +15,10 @@ public partial class TowersScript : StaticBody2D
 		HeldBehaviour();
 	}
 
-	protected virtual void TowerInit() // @OnReady stuff for all towers
+	public void TowerInit(Editor editor, int id) // @OnReady stuff for all towers
 	{
-		editor = GetParent<Editor>();
+		this.editor = editor;
+		this.id = id;
 	}
 
 	public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)

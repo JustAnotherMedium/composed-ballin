@@ -50,11 +50,10 @@ font_size = 28
 
 [node name="Player UI" type="Control" unique_id=484183861 node_paths=PackedStringArray("healthBar", "healthText", "moneyText", "spawnCredits", "spawnCreditsText", "waveText", "TimerText", "Clock", "TimerUI")]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 110.0
 grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_8iyf6")
 healthBar = NodePath("Money Health/Health")
 healthText = NodePath("Money Health/Health/Health Text")

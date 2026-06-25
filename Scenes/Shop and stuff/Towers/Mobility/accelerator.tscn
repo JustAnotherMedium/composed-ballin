@@ -16,12 +16,13 @@ gradient = SubResource("Gradient_3d8nw")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3d8nw"]
 size = Vector2(140, 140)
 
-[node name="Accelerator" type="StaticBody2D" unique_id=1386401311]
+[node name="Accelerator" type="StaticBody2D" unique_id=1386401311 node_paths=PackedStringArray("hitbox")]
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
 script = ExtResource("1_0hths")
 acceleration = 11.0
+hitbox = NodePath("HitBox")
 
 [node name="Field" type="MeshInstance2D" parent="." unique_id=1793181991]
 mesh = SubResource("QuadMesh_3d8nw")

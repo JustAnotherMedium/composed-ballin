@@ -9,7 +9,6 @@ public partial class SpinnerScript : TowersScript
 
 	public override void _Ready()
 	{
-		TowerInit();
 		rotation = GlobalRotationDegrees;
 	}
 

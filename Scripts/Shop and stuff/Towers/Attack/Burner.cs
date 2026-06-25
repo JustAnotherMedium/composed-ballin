@@ -6,13 +6,8 @@ public partial class Burner : TowersScript
 {
 	[Export]
 	private float damage;
+	[Export]
 	private Area2D hitbox;
-
-	protected override void TowerInit()
-	{
-		base.TowerInit();
-		hitbox = GetNode<Area2D>("HitBox");
-	}
 
 	public override void _Process(double delta)
 	{

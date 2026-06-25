@@ -7,19 +7,14 @@ public partial class Turret : TowersScript
 	[Export]
 	private float damage;
 	private float rotation;
+	[Export]
 	private Area2D range;
 	private BallScript target = null;
+	[Export]
 	private Node2D rangeIndicator;
+	[Export]
 	private Timer cooldown;
 	private bool canFire = false;
-
-	protected override void TowerInit()
-	{
-		base.TowerInit();
-		range = GetNode<Area2D>("Range");
-		rangeIndicator = GetNode<Node2D>("Range Indicator");
-		cooldown = GetNode<Timer>("Fire Cooldown");
-	}
 
 	public override void _Process(double delta)
 	{

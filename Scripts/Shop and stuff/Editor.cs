@@ -4,16 +4,19 @@ using System;
 public partial class Editor : Node
 {
     private int heldId = -1; // id of the tower that has been picked up
-
-    private bool editable = false;
+    private int currentHighestID = 0; // id is guarenteed to be unused by any tower
+    private bool editable = true;
+	private ShopConstants shopConstants;
 
     [Signal]
     public delegate void EditModeExitEventHandler();
 
     public override void _Ready()
     {
-        SpawnerScript spawner = GetNode<SpawnerScript>("../../../Spawner Portal");
-        spawner.WaveEnd += EnterEditMode;
+        shopConstants = GetNode<ShopConstants>("../UI/Shop/ShopUi");
+
+        SpawnerScript spawner = GetNode<SpawnerScript>("../Spawner Portal");
+        spawner.ShopSetup += EnterEditMode;
     }
 
     public override void _Process(double delta)
@@ -25,7 +28,7 @@ public partial class Editor : Node
         }
     }
 
-    private void EnterEditMode(int a, int b) // these arent used its just that the WaveEnd signal also brodcasts that info and i HAVE to accept it
+    private void EnterEditMode()
     {
         editable = true;
     }
@@ -33,6 +36,16 @@ public partial class Editor : Node
     public bool CanEdit()
     {
         return editable;
+    }
+
+    public void SpawnTower(int index)
+    {
+        PackedScene scene = shopConstants.towers[index];
+        TowersScript tower = scene.Instantiate<TowersScript>();
+        tower.TowerInit(this, currentHighestID);
+        AddChild(tower);
+        tower.GlobalPosition = GetViewport().GetCamera2D().GlobalPosition;
+        currentHighestID++;
     }
 
     // When an item is picked up

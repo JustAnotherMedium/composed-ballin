@@ -23,7 +23,7 @@ public partial class SpawnerScript : Node2D
 	private int currentWave = 1;
 	private int spawnCredits;
 	private float ticketMultiplier = 2.2f;
-	private bool waveOngoing = true;
+	private bool waveOngoing = false;
 	private Timer spawnCooldown;
 	private Timer detonationTimer;
 
@@ -31,6 +31,8 @@ public partial class SpawnerScript : Node2D
 	public delegate void BallDetonationEventHandler(int damageTaken);
 	[Signal]
 	public delegate void WaveEndEventHandler(int moneyEarned, int hpHealed);
+	[Signal]
+	public delegate void ShopSetupEventHandler(); // Same as the Wave End signal but used by the shop and editor node to handle their stuff
 	private readonly int damagePerDetonation = 4;
 	private readonly int baseWaveEndMoneyEarn = 50;
 	private readonly int baseFastKillHpBonus = 5;
@@ -52,13 +54,10 @@ public partial class SpawnerScript : Node2D
 		spawnCooldown = GetNode<Timer>("Timers/Spawn Cooldown");
 		detonationTimer = GetNode<Timer>("Timers/Detonation Timer");
 
-		Editor editor = GetNode<Editor>("../UI/Shop/Editor");
+		Editor editor = GetNode<Editor>("../Editor");
 		editor.EditModeExit += StartNextWave;
 
-		currentWave = Mathf.Max(1, currentWave); // <=0 wave number will break the spawning code
-		spawnCredits = 5 * currentWave + 3; // This is only here because i might want to start on a different wave
-		GD.Print("Wave " + currentWave + " start!");
-		spawnCooldown.Start();
+		currentWave = Mathf.Max(0, currentWave); // <=0 wave number will break the spawning code
 	}
 
 	public override void _Process(double delta)
@@ -68,8 +67,9 @@ public partial class SpawnerScript : Node2D
 		if (!awardedWaveEnd && ballParent.GetChildCount() == 0 && spawnCredits <= 0)
 		{
 			EmitSignal(SignalName.WaveEnd, waveEndMoneyEarn, 0);
-			DamageNumbers.DisplayFloatingNumber(waveEndMoneyEarn, GetViewport().GetCamera2D().GlobalPosition, DamageNumbers.NumberType.WAVE_END_MONEY);
+			EmitSignal(SignalName.ShopSetup);
 			awardedWaveEnd = true;
+			DamageNumbers.DisplayFloatingNumber(waveEndMoneyEarn, GetViewport().GetCamera2D().GlobalPosition, DamageNumbers.NumberType.WAVE_END_MONEY);
 		}
 	}
 	

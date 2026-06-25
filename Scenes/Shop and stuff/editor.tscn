@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dwreyac8w4k0e"]
+
+[ext_resource type="Script" uid="uid://dlkla0roaxpmo" path="res://Scripts/Shop and stuff/Editor.cs" id="1_psvl4"]
+
+[node name="Editor" type="Node" unique_id=972387010 node_paths=PackedStringArray("shopConstants")]
+script = ExtResource("1_psvl4")
+shopConstants = NodePath("")

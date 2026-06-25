@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerVars : Control
 {
-	private int money = 0;
+	private int money = 45;
 	private int maxHP = 100;
 	private int hp;
 	public int Money { get => money; }
