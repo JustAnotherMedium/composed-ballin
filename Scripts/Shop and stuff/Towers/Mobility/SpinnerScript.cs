@@ -16,7 +16,7 @@ public partial class SpinnerScript : TowersScript
 	{
 		HeldBehaviour();
 
-		if (editor.CanEdit())
+		if (editor != null && editor.CanEdit())
 		{
 			GlobalRotationDegrees = rotation;
 		}

@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using GodotPlugins.Game;
 using System;
 using System.Reflection;
 
@@ -38,17 +39,26 @@ public partial class SpawnerScript : Node2D
 	private readonly int damagePerDetonation = 4;
 	private readonly int baseWaveEndMoneyEarn = 50;
 	private readonly int baseFastKillHpBonus = 5;
-	private int waveEndMoneyEarn = 50;
+	private int waveEndMoneyEarn = 10;
 	private int fastKillHpBonus = 5;
 	private bool awardedWaveEnd = false;
+
+	[Export]
+	private bool mainMenu = false;
 
 
 	public override void _Ready()
 	{
+		currentWave = Mathf.Max(0, currentWave); // <=0 wave number will break the spawning code
+
+		if (mainMenu) 
+		{
+			StartNextWave();
+			return;
+		}
+
 		Editor editor = GetNode<Editor>("../Editor");
 		editor.EditModeExit += StartNextWave;
-
-		currentWave = Mathf.Max(0, currentWave); // <=0 wave number will break the spawning code
 	}
 
 	public override void _Process(double delta)
@@ -57,9 +67,16 @@ public partial class SpawnerScript : Node2D
 
 		if (!awardedWaveEnd && ballParent.GetChildCount() == 0 && spawnCredits <= 0)
 		{
+			if (mainMenu)
+			{
+				StartNextWave();
+				return;	
+			}
+
 			EmitSignal(SignalName.WaveEnd, waveEndMoneyEarn, 0);
 			EmitSignal(SignalName.ShopSetup);
 			waveOngoing = false;
+			detonationTimer.Stop();
 			awardedWaveEnd = true;
 			DamageNumbers.DisplayFloatingNumber(waveEndMoneyEarn, GetViewport().GetCamera2D().GlobalPosition, DamageNumbers.NumberType.WAVE_END_MONEY);
 		}

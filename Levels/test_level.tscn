@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c8jq5c2qnk5e1" path="res://Scenes/Ball Portals/despawner_portal.tscn" id="3_4k50d"]
 [ext_resource type="PackedScene" uid="uid://dwreyac8w4k0e" path="res://Scenes/Shop and stuff/editor.tscn" id="4_3158n"]
 [ext_resource type="PackedScene" uid="uid://dp8yp7e61wyx7" path="res://Scenes/Shop and stuff/ui.tscn" id="5_3158n"]
+[ext_resource type="PackedScene" uid="uid://bp1poa5bj101a" path="res://Scenes/Shop and stuff/Towers/Attack/turret.tscn" id="6_ub4j8"]
 
 [node name="Test Level" type="Node2D" unique_id=1962027383]
 
@@ -32,3 +33,6 @@ position = Vector2(1122, 1865)
 [node name="UI" parent="." unique_id=1900290242 instance=ExtResource("5_3158n")]
 
 [node name="Editor" parent="." unique_id=972387010 instance=ExtResource("4_3158n")]
+
+[node name="Turret" parent="." unique_id=1396493512 instance=ExtResource("6_ub4j8")]
+position = Vector2(491, 846)

@@ -6,6 +6,8 @@ public partial class Turret : TowersScript
 {
 	[Export]
 	private float damage;
+	[Export]
+	private float radius;
 	private float rotation;
 	[Export]
 	private Area2D range;
@@ -20,7 +22,7 @@ public partial class Turret : TowersScript
 	{
 		base._Process(delta);
 
-		if (editor.CanEdit())
+		if (editor != null && editor.CanEdit())
 		{
 			GlobalRotationDegrees = rotation;
 			rangeIndicator.Visible = true;
@@ -28,6 +30,7 @@ public partial class Turret : TowersScript
 		else
 		{
 			rangeIndicator.Visible = false;
+
 			if (target == null)
 			{
 				target = AcquireNewTarget();
@@ -44,6 +47,11 @@ public partial class Turret : TowersScript
 			{
 				target = null;
 				return;
+			}
+
+			if (!IsTargetInRange())
+			{
+				target = null;
 			}
 
 			if (canFire)
@@ -67,6 +75,11 @@ public partial class Turret : TowersScript
 		}
 
 		return target;
+	}
+
+	private bool IsTargetInRange()
+	{
+		return GlobalPosition.DistanceTo(target.GlobalPosition) <= radius;
 	}
 
 	private void ResetCooldown()

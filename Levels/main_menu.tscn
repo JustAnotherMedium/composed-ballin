@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://y20gv02jphe6"]
+
+[ext_resource type="PackedScene" uid="uid://cgl3kg53qwdxp" path="res://Scenes/Ball Portals/spawner_portal.tscn" id="1_jy27m"]
+[ext_resource type="PackedScene" uid="uid://c8jq5c2qnk5e1" path="res://Scenes/Ball Portals/despawner_portal.tscn" id="2_3es34"]
+[ext_resource type="PackedScene" uid="uid://dahposuv12cav" path="res://Scenes/Shop and stuff/Towers/Attack/spikes.tscn" id="3_3es34"]
+[ext_resource type="PackedScene" uid="uid://dopti73fwal72" path="res://Scenes/Shop and stuff/Towers/Mobility/spinner_fast.tscn" id="4_15p6s"]
+[ext_resource type="PackedScene" uid="uid://cgeup4lh65xmk" path="res://Scenes/Shop and stuff/Towers/Mobility/accelerator.tscn" id="5_5qvx8"]
+[ext_resource type="PackedScene" uid="uid://b6nbh7b32jx7y" path="res://Scenes/Shop and stuff/Towers/Attack/burner.tscn" id="6_qor8d"]
+[ext_resource type="PackedScene" uid="uid://hxnrtg4ko3d0" path="res://Scenes/Shop and stuff/Towers/Attack/missle.tscn" id="7_6e2af"]
+[ext_resource type="PackedScene" uid="uid://bp1poa5bj101a" path="res://Scenes/Shop and stuff/Towers/Attack/turret.tscn" id="8_yw3yt"]
+
+[node name="Main Menu" type="Node2D" unique_id=271398071]
+
+[node name="Level" type="StaticBody2D" parent="." unique_id=758667222]
+
+[node name="Polygon2D" type="Polygon2D" parent="Level" unique_id=842244652]
+color = Color(0.75, 0.75, 0.75, 1)
+polygon = PackedVector2Array(-2033, -1089, -1962, -713, -1914, -556, -1859, -483, -1749, -438, -36, -89, 47, -78, 181, -77, 235, -98, 218, -57, 84, 70, -375, 108, -1643, 169, -1882, 153, -1850, 435, -1650, 455, -1334, 472, -1120, 492, -851, 557, -518, 634, -359, 868, -279, 919, -211, 934, 1628, 1050, 1849, 953, 1877, 358, 1571, 470, 103, 581, -192, 570, -313, 492, -325, 404, -283, 422, -174, 423, 56, 397, 350, 307, 512, 203, 557, 106, 1276, -42, 1520, -173, 1919, -492, 1890, -647, 1724, -1002, -1426, -1125, -1418, -1393, 2312, -1468, 2326, 1166, -2279, 1234, -2291, -2153, -2142, -2227)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level" unique_id=573145970]
+visible = false
+polygon = PackedVector2Array(-2033, -1089, -1962, -713, -1914, -556, -1859, -483, -1749, -438, -36, -89, 47, -78, 181, -77, 235, -98, 218, -57, 84, 70, -375, 108, -1643, 169, -1882, 153, -1850, 435, -1650, 455, -1334, 472, -1120, 492, -851, 557, -518, 634, -359, 868, -279, 919, -211, 934, 1628, 1050, 1849, 953, 1877, 358, 1571, 470, 103, 581, -192, 570, -313, 492, -325, 404, -283, 422, -174, 423, 56, 397, 350, 307, 512, 203, 557, 106, 1276, -42, 1520, -173, 1919, -492, 1890, -647, 1724, -1002, -1426, -1125, -1418, -1393, 2312, -1468, 2326, 1166, -2279, 1234, -2291, -2153, -2142, -2227)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level" unique_id=953215677]
+polygon = PackedVector2Array(-1408, -1358, -1478, -1526, -1519, -2427, -1961, -2530, -2206, -1965, -2222, -1526, -2218, -1151, -2714, -1403, -2090, -2951, -956, -2591, -1110, -1289)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=475939983]
+zoom = Vector2(0.3, 0.3)
+
+[node name="Spawner Portal" parent="." unique_id=1955785797 instance=ExtResource("1_jy27m")]
+position = Vector2(-2066, -2169)
+mainMenu = true
+
+[node name="Despawner Portal" parent="." unique_id=1478079035 instance=ExtResource("2_3es34")]
+position = Vector2(1613, 985)
+
+[node name="Spikes" parent="." unique_id=1880036887 instance=ExtResource("3_3es34")]
+position = Vector2(-1001, -327)
+
+[node name="Spinner Fast" parent="." unique_id=1955510055 instance=ExtResource("4_15p6s")]
+position = Vector2(97, -80)
+
+[node name="Accelerator" parent="." unique_id=1386401311 instance=ExtResource("5_5qvx8")]
+position = Vector2(450, 123)
+
+[node name="Burner" parent="." unique_id=1078403902 instance=ExtResource("6_qor8d")]
+position = Vector2(-375, -248)
+
+[node name="Missile" parent="." unique_id=1396493512 instance=ExtResource("7_6e2af")]
+position = Vector2(927, -552)
+
+[node name="Turret" parent="." unique_id=118201905 instance=ExtResource("8_yw3yt")]
+position = Vector2(653, -196)
