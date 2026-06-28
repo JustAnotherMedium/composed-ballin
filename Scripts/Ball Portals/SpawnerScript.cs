@@ -53,6 +53,7 @@ public partial class SpawnerScript : Node2D
 
 		if (mainMenu) 
 		{
+			currentWave = 39;
 			StartNextWave();
 			return;
 		}
