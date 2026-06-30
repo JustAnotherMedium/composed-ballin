@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://y20gv02jphe6"]
 
+[ext_resource type="Script" uid="uid://1kge1ycts4n4" path="res://Scripts/Main Menu/MainMenu.cs" id="1_gju5e"]
 [ext_resource type="PackedScene" uid="uid://cgl3kg53qwdxp" path="res://Scenes/Ball Portals/spawner_portal.tscn" id="1_jy27m"]
 [ext_resource type="PackedScene" uid="uid://c8jq5c2qnk5e1" path="res://Scenes/Ball Portals/despawner_portal.tscn" id="2_3es34"]
 [ext_resource type="Script" uid="uid://d0iuvxbqea6fu" path="res://Scripts/Main Menu/MainMenuButtons.cs" id="3_3es34"]
@@ -13,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://b3u8n5f5rjybp" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_triangle.tscn" id="10_yw3yt"]
 [ext_resource type="PackedScene" uid="uid://dfhsw3f6w6l3a" path="res://Scenes/Shop and stuff/Towers/Platforms/platform_rectangle.tscn" id="11_b8u61"]
 [ext_resource type="PackedScene" uid="uid://u6c055qlnuem" path="res://Scenes/Shop and stuff/Towers/Mobility/spinner_slow.tscn" id="13_mkm6k"]
+[ext_resource type="FontFile" uid="uid://cdixdre70abjb" path="res://Fonts/Poppins-SemiBold.ttf" id="14_updob"]
+[ext_resource type="FontFile" uid="uid://cftav8l25a7bc" path="res://Fonts/Poppins-ExtraBold.ttf" id="14_y558p"]
+[ext_resource type="Texture2D" uid="uid://c4hccj16f70si" path="res://icon.svg" id="15_2eu7b"]
 
 [sub_resource type="TextMesh" id="TextMesh_15p6s"]
 text = "Composed Ballin'"
@@ -27,17 +31,32 @@ colors = PackedColorArray(0.87399995, 1, 0.82, 1, 0.769, 1, 0.66999996, 1, 0.69,
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hllw6"]
 gradient = SubResource("Gradient_5qvx8")
 
-[node name="Main Menu" type="Node2D" unique_id=271398071]
+[sub_resource type="LabelSettings" id="LabelSettings_2eu7b"]
+font = ExtResource("14_updob")
+font_size = 45
+
+[sub_resource type="PrismMesh" id="PrismMesh_y558p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_updob"]
+font = ExtResource("14_y558p")
+font_size = 44
+
+[node name="Main Menu" type="Node2D" unique_id=271398071 node_paths=PackedStringArray("play", "tutorial", "camera", "levelSelect")]
+script = ExtResource("1_gju5e")
+play = NodePath("Play Button")
+tutorial = NodePath("Tutorial Button")
+camera = NodePath("Camera2D")
+levelSelect = NodePath("Level Select UI/Level Select")
 
 [node name="Level" type="StaticBody2D" parent="." unique_id=758667222]
 
 [node name="Polygon2D" type="Polygon2D" parent="Level" unique_id=842244652]
 color = Color(0.75, 0.75, 0.75, 1)
-polygon = PackedVector2Array(-2033, -1089, -1962, -713, -1914, -556, -1859, -483, -1749, -438, -36, -89, 47, -78, 181, -77, 235, -98, 218, -57, 84, 70, -375, 108, -1643, 169, -1882, 153, -1850, 435, -1650, 455, -1334, 472, -1120, 492, -851, 557, -518, 634, -359, 868, -279, 919, -211, 934, 1628, 1050, 1849, 953, 1877, 358, 1571, 470, 103, 581, -192, 570, -313, 492, -325, 404, -283, 422, -174, 423, 56, 397, 350, 307, 512, 203, 557, 106, 1276, -42, 1520, -173, 1919, -492, 1890, -647, 1724, -1002, -1426, -1125, -1418, -1393, 2312, -1468, 2326, 1166, -2279, 1234, -2291, -2153, -2142, -2227)
+polygon = PackedVector2Array(-2033, -1089, -1962, -713, -1914, -556, -1859, -483, -1749, -438, -36, -89, 47, -78, 181, -77, 235, -98, 218, -57, 84, 70, -375, 108, -1643, 169, -1882, 153, -1850, 435, -1650, 455, -1334, 472, -1120, 492, -851, 557, -518, 634, -359, 868, -279, 919, -211, 934, 1628, 1050, 1849, 953, 1877, 358, 1571, 470, 103, 581, -192, 570, -313, 492, -325, 404, -283, 422, -174, 423, 56, 397, 350, 307, 512, 203, 557, 106, 1276, -42, 1520, -173, 1919, -492, 1890, -647, 1843, -1111, -1098, -1115, -1219, -1048, -1294, -952, -1370, -869, -1426, -1125, -1418, -1393, 2312, -1468, 2326, 1166, -2279, 1234, -2291, -2153, -2142, -2227)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level" unique_id=573145970]
+[node name="collider" type="CollisionPolygon2D" parent="Level" unique_id=573145970]
 visible = false
-polygon = PackedVector2Array(-2033, -1089, -1962, -713, -1914, -556, -1859, -483, -1749, -438, -36, -89, 47, -78, 181, -77, 235, -98, 218, -57, 84, 70, -375, 108, -1643, 169, -1882, 153, -1850, 435, -1650, 455, -1334, 472, -1120, 492, -851, 557, -518, 634, -359, 868, -279, 919, -211, 934, 1628, 1050, 1849, 953, 1877, 358, 1571, 470, 103, 581, -192, 570, -313, 492, -325, 404, -283, 422, -174, 423, 56, 397, 350, 307, 512, 203, 557, 106, 1276, -42, 1520, -173, 1919, -492, 1890, -647, 1724, -1002, -1426, -1125, -1418, -1393, 2312, -1468, 2326, 1166, -2279, 1234, -2291, -2153, -2142, -2227)
+polygon = PackedVector2Array(-2033, -1089, -1962, -713, -1914, -556, -1859, -483, -1749, -438, -36, -89, 47, -78, 181, -77, 235, -98, 218, -57, 84, 70, -375, 108, -1643, 169, -1882, 153, -1850, 435, -1650, 455, -1334, 472, -1120, 492, -851, 557, -518, 634, -359, 868, -279, 919, -211, 934, 1628, 1050, 1849, 953, 1877, 358, 1571, 470, 103, 581, -192, 570, -313, 492, -325, 404, -283, 422, -174, 423, 56, 397, 350, 307, 512, 203, 557, 106, 1276, -42, 1520, -173, 1919, -492, 1890, -647, 1843, -1111, -1098, -1115, -1219, -1048, -1294, -952, -1370, -869, -1426, -1125, -1418, -1393, 2312, -1468, 2326, 1166, -2279, 1234, -2291, -2153, -2142, -2227)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level" unique_id=953215677]
 polygon = PackedVector2Array(-1408, -1358, -1478, -1526, -1519, -2427, -1961, -2530, -2206, -1965, -2222, -1526, -2218, -1151, -2714, -1403, -2090, -2951, -956, -2591, -1110, -1289)
@@ -46,8 +65,8 @@ polygon = PackedVector2Array(-1408, -1358, -1478, -1526, -1519, -2427, -1961, -2
 zoom = Vector2(0.3, 0.3)
 
 [node name="Title Card" type="MeshInstance2D" parent="." unique_id=1697452823]
-position = Vector2(209.00009, -895)
-rotation = 0.038225766
+position = Vector2(338.00003, -916)
+rotation = 0.017453292
 scale = Vector2(1.255, -1.38)
 skew = 0.092502356
 mesh = SubResource("TextMesh_15p6s")
@@ -266,18 +285,179 @@ rotation = 1.5707964
 script = ExtResource("3_3es34")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Play Button" unique_id=1947907818]
+visible = false
 polygon = PackedVector2Array(-1914, -556, -1859, -483, -1749, -438, -36, -89, 47, -78, 181, -77, 235, -98, 218, -57, 84, 70, -375, 108, -1643, 169, -1882, 153, -1936, 142, -1929, -600)
+
+[node name="Drawing" type="Node" parent="Play Button" unique_id=258147458]
+
+[node name="Polygon2D" type="Polygon2D" parent="Play Button/Drawing" unique_id=1958842329]
+polygon = PackedVector2Array(-1821, 112, -1818, -415, -1523, -335, -1398, -272, -1419, -104, -1554, -60, -1660, -62, -1658, 80, -1707, 127)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Play Button/Drawing" unique_id=1902336533]
+polygon = PackedVector2Array(-1398, 119, -1211, -283, -1084, -265, -1227, 39, -1009, 21, -960, 86)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Play Button/Drawing" unique_id=334107162]
+polygon = PackedVector2Array(-895, 88, -760, -207, -594, -169, -343, 70, -470, 78, -594, -21, -726, -47, -773, 78)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Play Button/Drawing" unique_id=69666083]
+position = Vector2(0, 5)
+polygon = PackedVector2Array(-462, -140, -288, -109, -96, -21, -10, -72, 45, -56, 112, -54, -42, 21, -140, 60, -291, 65, -190, 10)
 
 [node name="Tutorial Button" type="Area2D" parent="." unique_id=279621111]
 script = ExtResource("3_3es34")
 buttonType = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tutorial Button" unique_id=518926613]
+visible = false
 polygon = PackedVector2Array(1877, 358, 1571, 470, 103, 581, -192, 570, -313, 492, -325, 404, -283, 422, -174, 423, 56, 397, 350, 307, 512, 203, 557, 106, 1276, -42, 1520, -173, 1919, -492, 1940, -513, 1928, 355)
+
+[node name="Drawing" type="Node" parent="Tutorial Button" unique_id=1463386205]
 
 [node name="Exit Button" type="Area2D" parent="." unique_id=613144663]
 script = ExtResource("3_3es34")
 buttonType = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Exit Button" unique_id=1113451236]
+visible = false
 polygon = PackedVector2Array(-1850, 435, -1650, 455, -1334, 472, -1120, 492, -851, 557, -518, 634, -359, 868, -279, 919, -211, 934, -246, 1205, -2279, 1234, -2282, 466)
+
+[node name="Drawing" type="Node" parent="Exit Button" unique_id=1838681721]
+
+[node name="Level Select UI" type="CanvasLayer" parent="." unique_id=620835409]
+
+[node name="Level Select" type="Control" parent="Level Select UI" unique_id=1433369558]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4000.0
+offset_right = -4000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Level Select UI/Level Select" unique_id=63170178]
+custom_minimum_size = Vector2(220, 65)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Level Select UI/Level Select/PanelContainer" unique_id=2011349805]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Level Select UI/Level Select/PanelContainer/CenterContainer" unique_id=438819641]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_2eu7b")
+
+[node name="Previous" type="Button" parent="Level Select UI/Level Select" unique_id=562630429]
+custom_minimum_size = Vector2(60, 130)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -64.0
+offset_right = 80.0
+offset_bottom = 66.0
+grow_vertical = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Level Select UI/Level Select/Previous" unique_id=1113049111]
+position = Vector2(28, 65)
+rotation = -1.5707964
+scale = Vector2(-45, -40)
+mesh = SubResource("PrismMesh_y558p")
+
+[node name="Next" type="Button" parent="Level Select UI/Level Select" unique_id=766091922]
+custom_minimum_size = Vector2(60, 130)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -64.0
+offset_right = -20.0
+offset_bottom = 66.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Level Select UI/Level Select/Next" unique_id=673868891]
+position = Vector2(30, 65)
+rotation = 1.5707964
+scale = Vector2(-45, -40)
+mesh = SubResource("PrismMesh_y558p")
+
+[node name="TextureRect" type="TextureRect" parent="Level Select UI/Level Select" unique_id=1073744135]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_2eu7b")
+stretch_mode = 5
+
+[node name="Play" type="Button" parent="Level Select UI/Level Select" unique_id=1052344260]
+custom_minimum_size = Vector2(220, 65)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -75.0
+offset_right = 110.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Level Select UI/Level Select/Play" unique_id=1451792227]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+label_settings = SubResource("LabelSettings_updob")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="Level Select UI/Level Select" unique_id=1140989222]
+custom_minimum_size = Vector2(220, 65)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+offset_right = 220.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Level Select UI/Level Select/Exit" unique_id=1756968803]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+label_settings = SubResource("LabelSettings_updob")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="Level Select UI/Level Select/Exit" to="." method="OpenMainMenu"]

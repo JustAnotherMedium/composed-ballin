@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bveg0owry685w"]
+
+[ext_resource type="Script" uid="uid://blko0d7awtldk" path="res://Scripts/Main Menu/LevelManager.cs" id="1_ymvf2"]
+[ext_resource type="Script" uid="uid://by5vacg4qmy67" path="res://Scripts/Main Menu/LevelManagerConstants.cs" id="2_5eh31"]
+
+[node name="Level Manager" type="Node" unique_id=2054733951]
+script = ExtResource("1_ymvf2")
+
+[node name="Constants" type="Node" parent="." unique_id=764447114]
+script = ExtResource("2_5eh31")

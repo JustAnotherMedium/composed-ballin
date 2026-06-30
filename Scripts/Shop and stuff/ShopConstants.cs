@@ -3,7 +3,8 @@ using System;
 
 public partial class ShopConstants : Control
 {
-	public readonly string[] names = {
+	public readonly string[] names = 
+	{
 		"Rectangle", // 1
 		"Triangle", // 2
 		"Circle", // 3
@@ -16,7 +17,8 @@ public partial class ShopConstants : Control
 		"Missile" // 4
 	};
 
-	public readonly string[] descriptions = {
+	public readonly string[] descriptions = 
+	{
 		"A rectangular platform",
 		"A triangular platform",
 		"A circular platform",
@@ -29,7 +31,8 @@ public partial class ShopConstants : Control
 		"Shoots a ball for 15 damage every second",
 	};
 
-	public readonly int[] prices = {
+	public readonly int[] prices = 
+	{
 		10, // Platform rect
 		10, // Platform Triangle
 		10, // platform circle

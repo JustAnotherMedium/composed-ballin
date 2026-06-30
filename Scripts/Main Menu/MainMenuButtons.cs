@@ -13,6 +13,11 @@ public partial class MainMenuButtons : Area2D
     [Export]
     private MainMenuButtonTypes buttonType;
 
+    [Signal]
+    public delegate void PlayEventHandler();
+    [Signal]
+    public delegate void TutorialEventHandler();
+
     public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)
     {
 		InputEventMouseButton mouseButton = @event as InputEventMouseButton; // get it as mouse button
@@ -21,15 +26,16 @@ public partial class MainMenuButtons : Area2D
             switch (buttonType)
             {
                 case MainMenuButtonTypes.PLAY:
-                    GD.Print("Play the game!");
+                    EmitSignal(SignalName.Play);
                     break;
                 
                 case MainMenuButtonTypes.TUTORIAL:
-                    GD.Print("How to play the game!");
+                    EmitSignal(SignalName.Tutorial);
                     break;
 
                 case MainMenuButtonTypes.EXIT:
-                    GD.Print("Don't want to play the game...");
+                    // bleh nuke game
+                    GetTree().Quit();
                     break;
             }
         }
