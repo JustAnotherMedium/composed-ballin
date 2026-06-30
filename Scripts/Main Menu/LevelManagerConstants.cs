@@ -9,6 +9,7 @@ public partial class LevelManagerConstants : Node
 
     public string[] names =
     {
-        ""
+        "Test",
+        "Test2"
     };
 }

@@ -39,5 +39,3 @@ public partial class MainMenu : Node2D
 		
 	}
 }
-
-// I think i was high when i wrote this and everything that ties to it

@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://blko0d7awtldk" path="res://Scripts/Main Menu/LevelManager.cs" id="1_ymvf2"]
 [ext_resource type="Script" uid="uid://by5vacg4qmy67" path="res://Scripts/Main Menu/LevelManagerConstants.cs" id="2_5eh31"]
+[ext_resource type="PackedScene" uid="uid://y20gv02jphe6" path="res://Levels/main_menu.tscn" id="3_h50aq"]
+[ext_resource type="PackedScene" uid="uid://b0e8r73ymrrcw" path="res://Levels/test_level.tscn" id="3_iait3"]
 
-[node name="Level Manager" type="Node" unique_id=2054733951]
+[node name="Level Manager" type="Node" unique_id=2054733951 node_paths=PackedStringArray("mainMenu", "constants")]
 script = ExtResource("1_ymvf2")
+mainMenu = NodePath("Main Menu")
+constants = NodePath("Constants")
 
 [node name="Constants" type="Node" parent="." unique_id=764447114]
 script = ExtResource("2_5eh31")
+levels = Array[PackedScene]([ExtResource("3_iait3")])
+
+[node name="Main Menu" parent="." unique_id=271398071 instance=ExtResource("3_h50aq")]

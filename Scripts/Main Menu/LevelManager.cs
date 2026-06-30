@@ -8,7 +8,7 @@ public partial class LevelManager : Node
     private static LevelManager instance;
 
     [Export]
-    private Node2D mainMenu;
+    private MainMenu mainMenu;
     [Export]
     private LevelManagerConstants constants;
     private Node2D level;
@@ -27,8 +27,9 @@ public partial class LevelManager : Node
 
     public static void ReturnToMainMenu()
     {
-        instance.level.Free(); // ahh free at last, o gabriel now dawns thy reckoning
-        instance.AddChild(instance.mainMenu); // and thy gore shall glisten before the temples of man
+        instance.level.Free(); // ahh free at last...
+        instance.AddChild(instance.mainMenu); // o gabriel now dawns thy reckoning
+        instance.mainMenu.OpenMainMenu(); // and thy gore shall glisten before the temples of man
     }
 
 }

@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://cdixdre70abjb" path="res://Fonts/Poppins-SemiBold.ttf" id="14_updob"]
 [ext_resource type="FontFile" uid="uid://cftav8l25a7bc" path="res://Fonts/Poppins-ExtraBold.ttf" id="14_y558p"]
 [ext_resource type="Texture2D" uid="uid://c4hccj16f70si" path="res://icon.svg" id="15_2eu7b"]
+[ext_resource type="Script" uid="uid://cx68prp7dpen6" path="res://Scripts/Main Menu/LevelSelect.cs" id="15_7b3dh"]
 
 [sub_resource type="TextMesh" id="TextMesh_15p6s"]
 text = "Composed Ballin'"
@@ -313,6 +314,30 @@ polygon = PackedVector2Array(1877, 358, 1571, 470, 103, 581, -192, 570, -313, 49
 
 [node name="Drawing" type="Node" parent="Tutorial Button" unique_id=1463386205]
 
+[node name="Polygon2D" type="Polygon2D" parent="Tutorial Button/Drawing" unique_id=897665108]
+polygon = PackedVector2Array(566, 128, 547, 191, 620, 197, 607, 480, 673, 486, 698, 216, 777, 206, 773, 90)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Tutorial Button/Drawing" unique_id=1867833842]
+polygon = PackedVector2Array(727, 246, 772, 242, 795, 411, 830, 448, 864, 413, 849, 244, 890, 235, 915, 441, 879, 503, 783, 510, 727, 439)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Tutorial Button/Drawing" unique_id=10410251]
+polygon = PackedVector2Array(834, 96, 843, 182, 926, 186, 971, 478, 1033, 478, 997, 178, 1063, 156, 1027, 42)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Tutorial Button/Drawing" unique_id=1291739751]
+polygon = PackedVector2Array(1078, 66, 1104, 4, 1188, -11, 1237, 49, 1258, 362, 1220, 450, 1104, 465, 1074, 407)
+
+[node name="Polygon2D5" type="Polygon2D" parent="Tutorial Button/Drawing" unique_id=1138666218]
+polygon = PackedVector2Array(1316, 424, 1276, -5, 1383, -65, 1453, -50, 1494, 57, 1466, 118, 1366, 160, 1565, 396, 1507, 407, 1370, 255, 1421, 435)
+
+[node name="Polygon2D6" type="Polygon2D" parent="Tutorial Button/Drawing" unique_id=1457234439]
+polygon = PackedVector2Array(1471, -99, 1599, 411, 1664, 396, 1526, -140)
+
+[node name="Polygon2D7" type="Polygon2D" parent="Tutorial Button/Drawing" unique_id=1542563628]
+polygon = PackedVector2Array(1685, 385, 1610, -202, 1653, -251, 1854, 315, 1811, 332, 1724, 115, 1704, 137, 1754, 358)
+
+[node name="Polygon2D8" type="Polygon2D" parent="Tutorial Button/Drawing" unique_id=533666593]
+polygon = PackedVector2Array(1709, -296, 1743, -331, 1854, -7, 1908, -78, 1902, 113, 1831, 111)
+
 [node name="Exit Button" type="Area2D" parent="." unique_id=613144663]
 script = ExtResource("3_3es34")
 buttonType = 2
@@ -323,7 +348,21 @@ polygon = PackedVector2Array(-1850, 435, -1650, 455, -1334, 472, -1120, 492, -85
 
 [node name="Drawing" type="Node" parent="Exit Button" unique_id=1838681721]
 
-[node name="Level Select UI" type="CanvasLayer" parent="." unique_id=620835409]
+[node name="Polygon2D" type="Polygon2D" parent="Exit Button/Drawing" unique_id=1921666128]
+polygon = PackedVector2Array(-1878, 1036, -1875, 467, -1495, 505, -1502, 639, -1747, 622, -1743, 760, -1447, 740, -1436, 809, -1447, 878, -1730, 874, -1730, 943, -1443, 954, -1460, 1043)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Exit Button/Drawing" unique_id=254180673]
+polygon = PackedVector2Array(-1433, 501, -1333, 512, -1229, 698, -1153, 532, -1036, 543, -1143, 795, -1019, 1050, -1129, 1050, -1233, 816, -1284, 1036, -1384, 1030, -1326, 774)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Exit Button/Drawing" unique_id=143291084]
+polygon = PackedVector2Array(-984, 553, -898, 581, -815, 1057, -963, 1047)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Exit Button/Drawing" unique_id=1029814175]
+polygon = PackedVector2Array(-811, 612, -542, 667, -497, 746, -611, 722, -414, 1043, -611, 1050, -687, 1009, -694, 740, -798, 705)
+
+[node name="Level Select UI" type="CanvasLayer" parent="." unique_id=620835409 node_paths=PackedStringArray("name")]
+script = ExtResource("15_7b3dh")
+name = NodePath("Level Select/PanelContainer/CenterContainer/Name")
 
 [node name="Level Select" type="Control" parent="Level Select UI" unique_id=1433369558]
 layout_mode = 3
@@ -460,4 +499,7 @@ label_settings = SubResource("LabelSettings_updob")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="Level Select UI/Level Select/Previous" to="Level Select UI" method="Previous"]
+[connection signal="pressed" from="Level Select UI/Level Select/Next" to="Level Select UI" method="Next"]
+[connection signal="pressed" from="Level Select UI/Level Select/Play" to="Level Select UI" method="Play"]
 [connection signal="button_down" from="Level Select UI/Level Select/Exit" to="." method="OpenMainMenu"]
